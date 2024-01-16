@@ -1,0 +1,186 @@
+\chapter{Endpoints de Formularios}\label{cap:anexo-expoint-forms}
+
+\section{Endpoint del Formulario Registro de Cliente}
+
+\subsection*{URL}
+\texttt{http://\{\{ip\}\}:\{\{port\}\}/api/clients/client/form/}
+
+\subsection*{Método}
+POST
+
+\subsection*{Body de Ejemplo:}
+A continuación se presenta un ejemplo.
+\begin{lstlisting}[caption=Body de Ejemplo, label=example-body]
+{
+    "first_name": "Martina",
+    "last_name": "Gutierrez",
+    "id_type": "DOCUMENT",
+    "id_value": "42304328",
+    "birth_date": "2000-11-13",
+    "sex": "FEMALE",
+    "marital_status": "SINGLE",
+    "studies": "INCOMPLETE_UNIVERSITY",
+    "email": "martina2000@gmail.com",
+    "housing_type": "HOUSE",
+    "locality": 9,
+    "address": "Av. Patria 1234",
+    "postal": "5000",
+    "employment": "programmer",
+    "salary": "123",
+    "other_income": "No tengo otros ingresos",
+    "amount_other_income": "0",
+    "amount_retirement": "0",
+    "amount_pension": "0",
+    "vehicle": "No tengo otros vehiculos",
+    "tel": [
+        "3512254210",
+        "+54 9 25578784"
+    ],
+    "partner_salary": "0"
+}
+\end{lstlisting}
+\subsection*{Campos del Body:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Campo} & \textbf{Tipo} & \textbf{Opciones} & \textbf{Descripción} \\ \hline
+        first\_name & String & & Nombre del cliente. \\ \hline
+        last\_name & String & & Apellido del cliente. \\ \hline
+        id\_type & String & DOCUMENT, PASSPORT & Tipo de documento de identidad. \\ \hline
+        id\_value & String & & Valor del documento de identidad. \\ \hline
+        birth\_date & String & & Fecha de nacimiento del cliente. \\ \hline
+        sex & String & MALE, FEMALE & Género del cliente. \\ \hline
+        marital\_status & String & SINGLE, MARRIED, DIVORCED, WIDOWER & Estado civil del cliente. \\ \hline
+        studies & String & INCOMPLETE\_PRIMARY, COMPLETE\_PRIMARY, INCOMPLETE\_SECONDARY, COMPLETE\_SECONDARY, INCOMPLETE\_TERTIARY, COMPLETE\_TERTIARY, INCOMPLETE\_UNIVERSITY, COMPLETE\_UNIVERSITY & Nivel de estudios del cliente. \\ \hline
+        email & String & & Correo electrónico del cliente. \\ \hline
+        housing\_type & String & HOUSE, DEPARTMENT, TRAILER, STREET\_SITUATION & Tipo de vivienda del cliente. \\ \hline
+        locality & Integer & & ID de localidad del cliente. \\ \hline
+        address & String & & Dirección del cliente. \\ \hline
+        postal & String & & Código postal del cliente. \\ \hline
+        employment & String & & Ocupación del cliente. \\ \hline
+        salary & String & & Salario del cliente. \\ \hline
+        other\_income & String & & Otros ingresos del cliente. \\ \hline
+        amount\_other\_income & String & & Monto de otros ingresos. \\ \hline
+        amount\_retirement & String & & Monto de jubilación. \\ \hline
+        amount\_pension & String & & Monto de pensión. \\ \hline
+        vehicle & String & & Información sobre vehículos del cliente. \\ \hline
+        tel & List & & Lista de números de teléfono del cliente. \\ \hline
+        partner\_salary & String & & Salario del cónyuge (si aplica). \\ \hline
+    \end{tabular}
+    \caption{Descripción de campos del Body}
+    \label{tab:body-fields-client}
+\end{table}
+
+
+\subsection*{Headers:}
+
+\begin{itemize}
+    \item \textbf{Authorization:} Token \{\{TOKEN\}\}
+    \item \textbf{Content-Type:} application/json
+\end{itemize}
+
+
+
+
+
+
+\section{Endpoint del Formulario Registro de Hijo}
+
+\subsection*{URL}
+\texttt{http://\{\{ip\}\}:\{\{port\}\}/api/clients/son/form/}
+
+\subsection*{Método}
+POST
+
+\subsection*{Campos del Body:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|p{7cm}|}
+        \hline
+        \textbf{Campo} & \textbf{Tipo} & \textbf{Opciones} & \textbf{Descripción} \\ \hline
+        id\_consultant & String & & Identificación del consultor asociado. \\ \hline
+        first\_name & String & & Nombre del hijo. \\ \hline
+        last\_name & String & & Apellido del hijo. \\ \hline
+        id\_type & String & DOCUMENT, PASSPORT & Tipo de documento de identidad del hijo. \\ \hline
+        id\_value & String & & Valor del documento de identidad del hijo. \\ \hline
+        birth\_date & String & & Fecha de nacimiento del hijo. \\ \hline
+        sex & String & MALE, FEMALE & Género del hijo. \\ \hline
+        locality & Integer & & ID de la localidad del hijo. \\ \hline
+        address & String & & Dirección del hijo. \\ \hline
+    \end{tabular}
+    \caption{Descripción de campos del Body}
+    \label{tab:body-fields-son}
+\end{table}
+
+\newpage
+\subsection*{Body de Ejemplo:}
+
+\begin{lstlisting}[caption=Body de Ejemplo, label=example-body-son]
+{
+    "id_consultant": "42304328",
+    "first_name": "Matilda",
+    "last_name": "Gonzales",
+    "id_type": "PASSPORT",
+    "id_value": "123456789",
+    "birth_date": "2020-11-14",
+    "sex": "FEMALE",
+    "locality": 9,
+    "address": "Av. Patria 1234"
+}
+\end{lstlisting}
+
+
+\subsection*{Headers:}
+
+\begin{itemize}
+    \item \textbf{Authorization:} Token \{\{TOKEN\}\}
+    \item \textbf{Content-Type:} application/json
+\end{itemize}
+
+
+
+
+\section{Endpoint del Formulario Consulta}
+
+\subsection*{URL}
+\texttt{http://\{\{ip\}\}:\{\{port\}\}/api/consultations/consultation/form/}
+
+\subsection*{Método}
+POST
+
+\subsection*{Body de Ejemplo:}
+
+\begin{lstlisting}[caption=Body de Ejemplo, label=example-body-consultation]
+{
+    "client": "42304328",
+    "tag": "Asesoramiento Legal",
+    "description": "Necesito asesoramiento legal con respecto a una disputa contractual con la Corporacion XYZ. El contrato involucra la venta de bienes y hay desacuerdos sobre los plazos de entrega y los terminos de pago.",
+    "opponent": "Corporacion XYZ"
+}
+\end{lstlisting}
+
+\subsection*{Campos del Body:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|p{7cm}|}
+        \hline
+        \textbf{Campo} & \textbf{Tipo} & \textbf{Opciones} & \textbf{Descripción} \\ \hline
+        client & String & & Identificación del cliente asociado a la consulta. \\ \hline
+        tag & String & & Etiqueta de la consulta. \\ \hline
+        description & String & & Descripción detallada de la consulta. \\ \hline
+        opponent & String & & Oponente o entidad involucrada en la consulta. \\ \hline
+    \end{tabular}
+    \caption{Descripción de campos del Body}
+    \label{tab:body-fields-consultation}
+\end{table}
+
+\subsection*{Headers:}
+
+\begin{itemize}
+    \item \textbf{Authorization:} Token \{\{TOKEN\}\}
+    \item \textbf{Content-Type:} application/json
+\end{itemize}
