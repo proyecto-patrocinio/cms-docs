@@ -12,7 +12,7 @@ El alcance de esta plataforma abarca el proceso desde la recepción de datos a t
 A continuación, se presenta una lista detallada de las tecnologías utilizadas en el desarrollo del proyecto, acompañadas de enlaces a sus respectivas documentaciones. Estos recursos fueron seleccionados estratégicamente para facilitar el desarrollo, la implementación y el mantenimiento del sistema.
 
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \begin{tabular}{|p{11cm}|p{4cm}|}
         \hline
@@ -48,6 +48,10 @@ A continuación, se presenta una lista detallada de las tecnologías utilizadas 
         Documentación de Docker. & \href{https://docs.docker.com/engine/}{Docker} \\
         \hline
         Documentación de Docker Swarm para la orquestación de contenedores. & \href{https://docs.docker.com/engine/swarm/}{Docker-Swarm}\\
+        \hline
+        Documentación de Robot Framework para la automatización de test. & \href{https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html}{Robot-Framework}\\
+        \hline
+        Documentación de Selenium para la automatización de tareas desde el browser. & \href{https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html}{Selenium}\\
         \hline
     \end{tabular}
     \caption{Recursos y Enlaces de Documentación}
@@ -125,7 +129,7 @@ La plataforma está diseñada para ser accesible desde dispositivos con pantalla
 
 \section{Modelo Conceptual de Datos - DER}
 
-En la construcción del Modelo Conceptual de Datos, se tomó la decisión de utilizar PostgreSQL como motor de búsqueda para la base de datos, basándonos en su destacada capacidad para respaldar las propiedades fundamentales del modelo ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad). Estas características son esenciales para garantizar la integridad y confiabilidad de las transacciones en ambientes de bases de datos.
+En la construcción del Modelo Conceptual de Datos, se tomó la decisión de utilizar PostgreSQL como motor de búsqueda para la base de datos, basándonos en su destacada capacidad para respaldar las propiedades fundamentales del modelo ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad). Estas características son esenciales para garantizar la integridad y confiabilidad de las transacciones en la base de datos.
 
 Posteriormente, al interpretar la matriz de relaciones, se simplificó la visualización al omitir algunas tablas intermedias, para facilitar la comprensión del esquema general de la base de datos de manera más accesible.
 
@@ -133,159 +137,13 @@ Los diagramas subsiguientes se derivan de un modelo de base de datos que ha sido
 
 Adicionalmente, como estrategia para simplificar el diseño y reducir la complejidad asociada al manejo de grandes volúmenes de datos, se ha decidido tratar las calles como cadenas de texto independientes de las localidades. Esta decisión se basa en la idea de no vincularlas geográficamente, evitando así la carga adicional que implicaría gestionar todas las calles de Argentina, la cual podría resultar significativa en términos de volumen de datos y complejidad operativa.
 
+Consulte en el anexo, los Diagramas~\ref{mat:der}, \ref{mat:der2} y \ref{mat:der3} para visualizar las matrices de relaciones de entidades.
 
 
-
-\begin{sidewaystable}[p]
-    \centering
-        \begin{tabular}{|p{4.1cm}|*{6}{>{\raggedright\arraybackslash}p{2.5cm}|}}
-         \hline
-         & \textbf{Calendar} & \textbf{Event} & \textbf{Card} & \textbf{Panel} & \textbf{Board} & \textbf{Request} \textbf{Consultation} \\
-         \hline
-        \textbf{Calendar} & \cellcolor{gray!25} & Contiene & Contenido en & x & x & x \\
-         \hline
-        \textbf{Event} & Contenido en & \cellcolor{gray!25} & x & x & x & x \\
-         \hline
-        \textbf{Card} & Tiene un & x & \cellcolor{gray!25} & Contenida en & x & x  \\
-         \hline
-        \textbf{Panel} & x & x & Contiene & \cellcolor{gray!25} & Contenido en & x \\
-         \hline
-        \textbf{Board} & x & x & x & Tiene & \cellcolor{gray!25} &   Le llegan\\
-         \hline
-        \textbf{RequestConsultation} & x & x & x & x & Hacia un & \cellcolor{gray!25} \\
-         \hline
-        \textbf{Consultation} & x & x & Tiene una & x & x & Tiene \\
-         \hline
-        \textbf{Client} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Patrimony} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Tel} & x & x & x & x & x & x \\
-         \hline
-        \textbf{User} & x & x & x & x & Miembro de & x \\
-         \hline
-        \textbf{Comment} & x & x & Está en una & x & x & x \\
-         \hline
-        \textbf{File} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Family} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Locality} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Province} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Nationality} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Child} & x & x & x & x & x & x  \\
-         \hline
-        \end{tabular})
-        \caption{Matriz de Relaciones Primera Parte}
-        \label{mat:der}
-        \end{sidewaystable}
-
-
-        
-\begin{sidewaystable}[p]
-    \centering
-        \begin{tabular}{|p{4.1cm}|*{7}{>{\raggedright\arraybackslash}p{2.5cm}|}}
-         \hline
-         & \textbf{Consultation} & \textbf{Client} & \textbf{Patrimony} & \textbf{Tel} & \textbf{User} & \textbf{Comment} & \textbf{File} \\
-         \hline
-        \textbf{Calendar} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Event} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Card}  & Pertenece a & x & x & x & x & x & x \\
-         \hline
-        \textbf{Panel}  & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Board}  & x & x & x & x & Tiene Miembros & x & x \\
-         \hline
-        \textbf{RequestConsultation} &  Solicita enviar una & x & x & x & x & x & x \\
-         \hline
-        \textbf{Consultation} & \cellcolor{gray!25} & Realizada por & x & x & x & Tiene & x \\
-         \hline
-        \textbf{Client}  & Realiza una & \cellcolor{gray!25} & Tiene & Tiene & x & x & x \\
-         \hline
-        \textbf{Patrimony}  & x & Pertenece a & \cellcolor{gray!25} & x & x & x & x \\
-         \hline
-        \textbf{Tel}  & x & Pertenece a & x & \cellcolor{gray!25} & x & &   \\
-         \hline
-        \textbf{User} & x & x & x & x & \cellcolor{gray!25} & Realiza un & x \\
-         \hline
-        \textbf{Comment}  & x & x & x & x & Lo comenta & \cellcolor{gray!25} & Tiene \\
-         \hline
-        \textbf{File}  & & & x & x & x & Adjuntado en & \cellcolor{gray!25}\\
-         \hline
-        \textbf{Family}  & x & Es de un & x & x & x & x & x \\
-         \hline
-        \textbf{Locality} & x & Residida por & x & x & x & x & x \\
-         \hline
-        \textbf{Province} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Nationality} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Child}  & x & x & x & x & x & x & x \\
-         \hline
-        \end{tabular})
-        \caption{Matriz de Relaciones Segunda Parte}
-        \label{mat:der}
-        \end{sidewaystable}
-
-
-        
-\begin{sidewaystable}[p]
-    \centering
-        \begin{tabular}{|p{4.1cm}|*{5}{>{\raggedright\arraybackslash}p{2.5cm}|}}
-         \hline
-       & \textbf{Family} & \textbf{Locality} & \textbf{Province} & \textbf{Nationality} & \textbf{Child} \\
-         \hline
-        \textbf{Calendar} & x & x & x & x & x \\
-         \hline
-        \textbf{Event} & x & x & x & x & x \\
-         \hline
-        \textbf{Card}  & x & x & x & x & x \\
-         \hline
-        \textbf{Panel}  & x & x & x & x & x \\
-         \hline
-        \textbf{Board}  & x & x & x & x & x \\
-         \hline
-        \textbf{RequestConsultation} & x & x & x & x & x \\
-         \hline
-        \textbf{Consultation}  & x & x & x & x & x \\
-         \hline
-        \textbf{Client} & Tiene una & Reside en & x & x & x \\
-         \hline
-        \textbf{Patrimony}  & x & x & x & x & x \\
-         \hline
-        \textbf{Tel}  & x & x & x & x & \\
-         \hline
-        \textbf{User}  & x & x & x & x & x  \\
-         \hline
-        \textbf{Comment}  & x & x & x & x & x \\
-         \hline
-        \textbf{File} & x & x & x & x & x \\
-         \hline
-        \textbf{Family}  & \cellcolor{gray!25} & x & x & x & Contiene \\
-         \hline
-        \textbf{Locality} & x & \cellcolor{gray!25} & Está en & x & Residida por \\
-         \hline
-        \textbf{Province}  & x & Tiene & \cellcolor{gray!25} & Está en & x \\
-         \hline
-        \textbf{Nationality}  & x & x & Tiene & \cellcolor{gray!25} & x \\
-         \hline
-        \textbf{Child}  & Está en una & Reside en & x & x & \cellcolor{gray!25} \\
-         \hline
-        \end{tabular})
-        \caption{Matriz de Relaciones Tercera Parte}
-        \label{mat:der}
-        \end{sidewaystable}
-
-\newpage
 
 A continuación se presenta el diagrama de Entidad-Relación. En celeste se resalta la relación muchos a muchos, la cual ha sido reemplazada por una tabla intermedia denominada "board-user". Y en un azul mas oscura se representa la herencia de Person con User y Client.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig/der.png}
     \caption{Diagrama Entidad Relación}
@@ -296,7 +154,7 @@ A continuación se presenta el diagrama de Entidad-Relación. En celeste se resa
 
 La implementación del modelo se lleva a cabo en Django. Sin embargo, para simplificar la explicación, se han omitido otras entidades relacionadas al usuario propias de Django, como tokens, grupos, etc. A continuación, se presenta el resultado visualizado mediante DBeaver, utilizado como gestor de la base de datos.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig/dbeaver.png}
     \caption{Implementación del Modelo Entidad Relación}
@@ -707,49 +565,49 @@ La siguiente matriz de trazabilidad relaciona cada uno de los requerimientos con
         \hline
         \textbf{RF.1.3} &  &  & &  &  &  &  &  & $\bullet$ & & \\
         \hline
-        \textbf{RF.1.4} &  &  & &  &  &  &  & $\bullet &  & & \\
+        \textbf{RF.1.4} &  &  & &  &  &  &  & $\bullet$ &  & & \\
         \hline
-        \textbf{RF.1.5} &  &  & &  &  &  &  & $\bullet &  & & \\
+        \textbf{RF.1.5} &  &  & &  &  &  &  & $\bullet$ &  & & \\
         \hline
-        \textbf{RF.1.6} &  &  & &  &  & $\bullet &  &  &  & & \\
+        \textbf{RF.1.6} &  &  & &  &  & $\bullet$ &  &  &  & & \\
         \hline
-        \textbf{RF.1.7} &  &  & &  &  &  &  $\bullet &  &  & & \\
+        \textbf{RF.1.7} &  &  & &  &  &  &  $\bullet$ &  &  & & \\
         \hline
-        \textbf{RF.2.1} & $\bullet &  &  & &  &  &  &  &  & & \\
+        \textbf{RF.2.1} & $\bullet$ &  &  & &  &  &  &  &  & & \\
         \hline
-        \textbf{RF.2.2} &  &  &  & & $\bullet &  &  &  &  & & \\
+        \textbf{RF.2.2} &  &  &  & & $\bullet$ &  &  &  &  & & \\
         \hline
-        \textbf{RF.2.3} &  &  & & & $\bullet &  &  &  &  & & \\
+        \textbf{RF.2.3} &  &  & & & $\bullet$ &  &  &  &  & & \\
         \hline
-        \textbf{RF.2.4} &  &  & $\bullet & & &  &  &  &  & & \\
+        \textbf{RF.2.4} &  &  & $\bullet$ & & &  &  &  &  & & \\
         \hline
-        \textbf{RF.2.5} &  & $\bullet &  & & &  &  &  &  & & \\
+        \textbf{RF.2.5} &  & $\bullet$ &  & & &  &  &  &  & & \\
         \hline
-        \textbf{RF.3.1} &  &  &  & &  &  & $\bullet &  &  & & $\bullet \\
+        \textbf{RF.3.1} &  &  &  & &  &  & $\bullet$ &  &  & & $\bullet$ \\
         \hline
-        \textbf{RF.3.2} &  &  &  & & & $\bullet &  &  &  & & $\bullet \\
+        \textbf{RF.3.2} &  &  &  & & & $\bullet$ &  &  &  & & $\bullet$ \\
         \hline
-        \textbf{RF.3.3} &  &  &  & & &  & $\bullet &  &  & & \\
+        \textbf{RF.3.3} &  &  &  & & &  & $\bullet$ &  &  & & \\
         \hline
-        \textbf{RF.3.4} &  &  &  & & & $\bullet &  &  &  & & \\
+        \textbf{RF.3.4} &  &  &  & & & $\bullet$ &  &  &  & & \\
         \hline
-        \textbf{RF.4.1} & $\bullet & & &  &  &  &  &  &  & & \\
+        \textbf{RF.4.1} & $\bullet$ & & &  &  &  &  &  &  & & \\
         \hline
-        \textbf{RF.4.2} &  &  & & &  &  &  & $\bullet &  & & \\
+        \textbf{RF.4.2} &  &  & & &  &  &  & $\bullet$ &  & & \\
         \hline
-        \textbf{RF.4.3} & $\bullet &  & &  &  &  &  &  &  & & \\
+        \textbf{RF.4.3} & $\bullet$ &  & &  &  &  &  &  &  & & \\
         \hline
-        \textbf{RF.4.4} &  &  &  & &  &  &  & $\bullet &  & & \\
+        \textbf{RF.4.4} &  &  &  & &  &  &  & $\bullet$ &  & & \\
         \hline
-        \textbf{RF.4.5} &  &  &  & & &  & $\bullet &  &  & & \\
+        \textbf{RF.4.5} &  &  &  & & &  & $\bullet$ &  &  & & \\
         \hline
-        \textbf{RF.5.1} &  &  &  & $\bullet & &  &  &  &  & & \\
+        \textbf{RF.5.1} &  &  &  & $\bullet$ & &  &  &  &  & & \\
         \hline
-        \textbf{RF.5.2} &  &  &  & $\bullet & &  &  &  & & & \\
+        \textbf{RF.5.2} &  &  &  & $\bullet$ & &  &  &  & & & \\
         \hline
-        \textbf{RF.5.3} &  &  &  & $\bullet &  &  &  &  &  & & \\
+        \textbf{RF.5.3} &  &  &  & $\bullet$ &  &  &  &  &  & & \\
         \hline
-        \textbf{RF.5.4} &  &  &  &&  &  &  &  &  & $\bullet & \\
+        \textbf{RF.5.4} &  &  &  &&  &  &  &  &  & $\bullet$ & \\
     \hline
         \textbf{RNF.1.1} &  &  & & &  &  &  &  &  & & \\
         \hline
@@ -757,7 +615,7 @@ La siguiente matriz de trazabilidad relaciona cada uno de los requerimientos con
         \hline
         \textbf{RNF.1.3} &  &  & & &  &  &  &  &  & & \\
         \hline
-        \textbf{RNF.1.4} &  &  & & &  &  &  &  &  & $\bullet & \\
+        \textbf{RNF.1.4} &  &  & & &  &  &  &  &  & $\bullet$ & \\
         \hline
         \textbf{RNF.2.1} &  &  & & &  &  &  &  &  & & \\
         \hline

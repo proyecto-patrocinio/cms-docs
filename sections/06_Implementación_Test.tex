@@ -291,11 +291,14 @@ Se puede encontrar un ejemplo detallado de la implementación de pruebas unitari
 \subsection{Diseño de Escenarios de Prueba}
 En la fase de diseño de pruebas, se proponen escenarios específicos que abarcan diversas situaciones para evaluar el software. Cada escenario se identifica con un ID único y se describe detalladamente para facilitar la ejecución y el análisis de las pruebas.
 
-Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. Se centran en examinar el comportamiento del sistema desde una perspectiva externa, sin acceder a los detalles internos de su implementación. 
+Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. Se centran en examinar el comportamiento del sistema desde una perspectiva externa, sin acceder a los detalles internos de su implementación.
+
+Se ha optado por utilizar el lenguaje Gherkin para expresar los escenarios de prueba. Gherkin es un lenguaje de formato sencillo que facilita la escritura de casos de prueba de manera comprensible tanto para técnicos como para no técnicos.
+
+En cuanto a las pruebas automáticas, se implementan utilizando el framework de prueba Robot Framework en conjunto con Selenium. Robot Framework es una herramienta de automatización de pruebas de código abierto que permite escribir pruebas de aceptación de manera clara y legible. Selenium, por su parte, se utiliza para la automatización de navegadores web, facilitando la interacción con la interfaz de usuario y la validación del comportamiento del sistema en un entorno real.
 
 
-
-\begin{longtable}{|c|p{2.5cm}|p{10.5cm}|}
+\begin{longtable}{|p{1cm}|p{2.5cm}|p{12cm}|}
     \caption{Escenarios de Prueba propuestos.}\\
     \hline
     \textbf{ID} & \textbf{Escenario} & \textbf{Descripción} \\
@@ -323,22 +326,24 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \hline
     PAT-SYS-2 & Activación de un Usuario Registrado & 
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como usuario ``administrador''.
+        \item \textbf{Given} Existe un superusuario administrador.
+        \item \textbf{And} Existe un usuario registrado sin activar.Existe un superusuario administrador
+        \item \textbf{And} Se accedió a la plataforma como usuario ``administrador''.
         \item \textbf{And} Se ingresó a la página de administración.
         \item \textbf{And} Se navegó a la pestaña ``Users''.
-        \item \textbf{And} Existe un usuario registrado sin activar.
         \newline
-        \item \textbf{When} Se edita el estado del usuario a ``Activo''.
+        \item \textbf{When} Se edita el estado del usuario ``nuevo'' a ``Activo''.
+        \item \textbf{And} Se desloguea de la página de administración.
         \newline
-        \item \textbf{Then} El usuario debería poder iniciar sesión en la plataforma con éxito.
+        \item \textbf{Then} El usuario ``nuevo'' debería poder iniciar sesión en la plataforma con éxito.
     \end{itemize}
     \\
     \hline
     PAT-SYS-3 & Visibilidad de Pestañas para Usuario Tomador de Caso.  &          
     \begin{itemize}
-        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la base de datos.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
         \newline
-        \item \textbf{When} Se accede a la plataforma como el usuario Tomador de Caso.
+        \item \textbf{When} Se accede a la plataforma como el usuario ``Tomador de Caso''.
         \newline
         \item \textbf{Then} La pestaña ``Consultancy'' debería estar visible.
         \item \textbf{And} Las pestañas ``Consultations'' y ``Clients'' del ``Panel de Control'' deberían estar visibles.
@@ -348,9 +353,9 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \hline
     PAT-SYS-4 & Visibilidad de Pestañas para Usuario Profesor. &  
     \begin{itemize}
-        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la base de datos.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
         \newline
-        \item \textbf{When} Se accede a la plataforma como el usuario Profesor.
+        \item \textbf{When} Se accede a la plataforma como el usuario ``Profesor''.
         \newline
         \item \textbf{Then} La pestaña ``Boards'' debería estar visible.
         \item \textbf{And} La pestaña ``Consultancy'' no debería estar visible.
@@ -360,50 +365,90 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \hline
     PAT-SYS-5 & Creación y visualización de una consulta como usuario Tomador de Caso & 
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
         \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Ese accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
         \newline
-        \item \textbf{When} Se crea una nueva consulta titulada ``Defensa al consumidor'' para el cliente con DNI ``32165498'' el oponente ``Garcia Export'' y descripcion ''Dummy``.
+        \item \textbf{When} Se crea la consulta ``Garantía'' con Cliente ``32165498'', oponente ``Samsung'' y descripcion ``Dummy''.
         \newline
-        \item \textbf{Then} La consulta ``Defensa al consumidor'' para el cliente con DNI ``32165498''  debería existir en base de datos.
-        \item \textbf{And} El ticket ``Defensa al consumidor'' debería estar visible en el panel de entrada de la pizarra``consultancy''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el cliente con DNI ``32165498''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Description'' en ``Dummy''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Progress State'' en ``TODO''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Opponent'' en ``Garcia Export''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Availability State'' en ``CREATED''.
+        \item \textbf{Then} La consulta ``Garant\'ia'' para el cliente con DNI ``32165498'' deberı\'ia existir en base de datos.
+        \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``CONSULTANCY''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Progress State'' en ``TODO''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deber\'ia contener el campo ``Availability State'' en ``CREATED''.
     \end{itemize}
     \\
     \hline
     PAT-SYS-6 & Visualización de una consulta como usuario Profesor & 
         \begin{itemize}
-        \item \textbf{Given} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Se accedió a la plataforma como el usuario Profesor.
-        \item \textbf{And} El usuario Profesor tiene acceso al board ``Comisión Civil y Comercial''.
-        \item \textbf{And} Existe una consulta titulada ``Defensa al consumidor'' para el cliente con DNI ``32165498'' el oponente ``Garcia Export'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO'' en la base de datos.
+        \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
+        \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Garantía
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+        \end{verbatim}
+        \item \textbf{And} Se accedió a la plataforma como usuario ``profesor''.
         \newline
-        \item \textbf{When} Se navega a la pestaña ``Board/Comisión Civil y Comercial''.
+        \item \textbf{When} Se navega a la pestaña ``Board/Comisión A1''
         \newline
-        \item \textbf{Then} El ticket ``Defensa al consumidor'' debería estar visible en un panel del board``Comisión Civil y Comercial''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el cliente con DNI ``32165498''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Description'' en ``Dummy''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Opponent'' en ``Garcia Export''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Availability State'' en ``ASSIGNED''.
+        \item \textbf{Then} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
     \end{itemize}
     \\ 
     \hline
     PAT-SYS-7 & Visualización del estado de una comisión & 
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Existe una consulta titulada ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``dummy'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO''en la base de datos.
-        \item \textbf{And} Existe una consulta titulada ``consulta 2'' para el cliente con DNI ``32165498'' el oponente ``dummy'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``IN\_PROGRESS''en la base de datos.
-        \item \textbf{And} Existe una consulta titulada ``consulta 3'' para el cliente con DNI ``32165498'' el oponente ``dummy'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO''en la base de datos.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Garantía1
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+            \end{verbatim}
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Garantía2
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    IN_PROGRESS
+            \end{verbatim}
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Garantía3
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+            \end{verbatim}
         \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
-        \newline
-        \item \textbf{When} Se selecciona el botón de información del panel ``Comisión Civil y Comercial''.
-        \newline
+        \item \textbf{When} Se selecciona el botón de información del panel ``Comisión A1''.
         \item \textbf{Then} El Popper de la comisión debería contener ``3 total cards''.
         \item \textbf{And} El Popper de la comisión debería contener ``2 cards to do''.
         \item \textbf{And} El Popper de la comisión debería contener ``1 cards in progress''.
@@ -413,194 +458,323 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \hline
     PAT-SYS-8 & Creación de solicitud de asignación de caso a una comisión &
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Existe una consulta titulada ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``dummy'' y descripcion ''Dummy`` sin asignar en la base de datos.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    CREATED
+        \end{verbatim}
         \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
         \newline
-        \item \textbf{When} Se arrastra el ticket ``consulta 1'' al panel ``Comisión Civil y Comercial''.
+        \item \textbf{When} Se crea la solicitud de asignación de consulta ``Garant\'ia'' a la comisión ``Comisión A1''.
         \newline
-        \item \textbf{Then} Debería existir una ``request consultation'' de la consulta ``consulta 1'' al panel ``Comisión Civil y Comercial'' en base de datos.
-        \item \textbf{And} El ticket ``consulta 1'' debería estar en el panel ``Comisión Civil y Comercial''.
+        \item \textbf{Then} Debería existir una ``request consultation'' de la consulta ``Garant\'ia'' al board ``Comisión A1'' en la DB.
+        \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar en el primer panel ``Comisión A1'' de la comisión.
         \newline
-        \item \textbf{When} Se arrastra el ticket ``consulta 1'' al panel ``Available Consultations''.
+        \item \textbf{When} Se elimina la solicitud de asignación de consulta ``Garant\'ia''.
         \newline
-        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``consulta 1'' en base de datos.
-        \item \textbf{And} El ticket ``consulta 1'' debería estar en el panel ``Available Consultations''.
+        \item \textbf{Then} debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia'' de la DB.
+        \item \textbf{And} el ticket ``Garant\'ia'' debería estar en el panel de entrada ``Available Consultations'' de la comisión.
     \end{itemize}
     \\
     \hline
-     PAT-SYS-9 & Visualización de la ventana consultations &
+     PAT-SYS-9 & Visualización y manipulación de la tabla en la ventana consultations &
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Existe una consulta titulada ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO''en la base de datos.
-        \item \textbf{And} Existe una consulta titulada ``consulta 2'' para el cliente con DNI ``32165498'' el oponente ``oponente 2'' y descripcion ''Dummy`` sin asignar en la base de datos.
-        \newline
-        \item \textbf{When} Se navega a la pestaña ``Consultations''.
-        \item \textbf{Then} La tabla debería contener 2 consultas.
-        \item \textbf{And} La tabla debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Assigned''.
-        \item \textbf{And} La tabla debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Unassigned Created''.
-        \newline
-        \item \textbf{When} Se descarga el csv de la tabla ``Consultations''.
-        \item \textbf{Then} El csv debería contener 2 consultas.
-        \item \textbf{And} El csv debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Assigned''.
-        \item \textbf{And} El csv debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Unassigned Created''.
-        \newline
-        \item \textbf{When} Se crea el filtro ``tag'' con ``consulta 1''.
-        \item \textbf{Then} La tabla debería contener 1 consulta.
-        \item \textbf{And} La tabla debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Assigned''.
-        \newline
-        \item \textbf{When} Se descarga el csv de la tabla ``Consultations''.
-        \item \textbf{Then} El csv debería contener 1 consulta.
-        \item \textbf{And} El csv debería contener la consulta ``consulta 1'' para el cliente con DNI ``32165498'' el oponente ``oponente 1'' y descripcion ''Dummy`` con estado ``To Do'' y ``Assigned''.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+    ...    Garantía1    32165498    Samsung
+    ...    Dummy    TODO     CREATED
+        \end{verbatim}
+        \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía2    32165498    Samsung
+        ...    Dummy    TODO     CREATED
+        \end{verbatim}
+        \item \textbf{When} Se navegó a la pestaña ``Control Panel - Consultations''
+    
+        \item \textbf{Then} La tabla debería contener 2 filas.
+        \item \textbf{And} La tabla debería contener la consulta:
+        \begin{verbatim}
+        ...    Garantía1    32165498
+        ...    Samsung    Dummy
+        \end{verbatim}
+        \item \textbf{And} La tabla debería contener la consulta:
+        \begin{verbatim}
+        ...    Garantía2    32165498
+        ...    Samsung    Dummy
+        \end{verbatim}
+
+        \item \textbf{When} Se descarga el csv de la tabla.
+
+        \item \textbf{Then} El archivo se debería haber descargado correctamente.
+        \item \textbf{And} El archivo de consultas descargado debería ser el esperado 'expected\_consultations.csv'
+    
+        \item \textbf{When} Se crea el filtro ``Tag'' con ``Garantía2''.
+    
+        \item \textbf{Then} La tabla debería contener 1 filas.
+        \item \textbf{And} la tabla debería contener la consulta:
+        \begin{verbatim}
+        ...    Garantía2
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        \end{verbatim}
+        
+        \item \textbf{When} Se descarga el csv de la tabla.
+        
+        \item \textbf{Then} El archivo se debería haber descargado correctamente.
+        \item \textbf{And} El archivo de consultas descargado debería ser el esperado 'expected\_filter\_consultations.csv'
+
     \end{itemize}
     \\
     \hline
     PAT-SYS-10 & Visualización de la ventana clients &
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Existe un cliente con DNI ``12345678'' en la base de datos.
-        \item \textbf{And} Existe un cliente con DNI ``87654321'' en la base de datos.
-        \newline
-        \item \textbf{When} Se navega a la pestaña ``Clients''.
-        \newline
-        \item \textbf{Then} La tabla debería contener 2 clientes.
-        \item \textbf{And} La tabla debería contener el cliente con DNI ``12345678''.
-        \item \textbf{And} La tabla debería contener el cliente con DNI ``87654321''.
-        \newline
-        \item \textbf{When} Se descarga el csv de la tabla ``Clients''.
-        \newline
-        \item \textbf{Then} El csv debería contener 2 clientes.
-        \item \textbf{And} El csv debería contener el cliente con DNI ``12345678''.
-        \item \textbf{And} El csv debería contener el cliente con DNI ``87654321''.
-        \newline
-        \item \textbf{When} Se crea el filtro ``ID Value'' con ``12345678''.
-        \newline
-        \item \textbf{Then} La tabla debería contener 1 cliente.
-        \item \textbf{And} La tabla debería contener el cliente con DNI ``12345678''.
-        \newline
-        \item \textbf{When} Se descarga el csv de la tabla ``Clients''.
-        \newline
-       \item \textbf{Then} El csv debería contener 1 cliente.
-        \item \textbf{And} El csv debería contener el cliente con DNI ``12345678''.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Existe el cliente en la base de datos:
+        \begin{verbatim}
+...    Romina    Cugat    DOCUMENT    32165498
+...    FEMALE    1996-06-23
+...    "Av Poeta Lugones 12"    5012    SINGLE
+...    HOUSE    COMPLETE_UNIVERSITY
+...    romina96@gmail.com
+        \end{verbatim}
+        \item \textbf{And} Existe el cliente en la base de datos:
+        \begin{verbatim}
+...    Pedro    Cugat    DOCUMENT    22145685
+...    FEMALE    1980-06-25
+...    "Av Poeta Lugones 12"    5012    SINGLE
+...    HOUSE    COMPLETE_UNIVERSITY   pedro80@gmail.com
+        \end{verbatim}
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{When} Se navegó a la pestaña ``Control Panel - Clients''.
+        \item \textbf{Then} La tabla debería contener 2 filas.
+        \item \textbf{And} La tabla debería contener el cliente:
+        \begin{verbatim}
+...    32165498    Romina    Cugat    Document
+...    Female    1996-06-23
+...    Av Poeta Lugones 12    5,012    Single    House
+...    Complete University   romina96@gmail.com
+        \end{verbatim}
+        \item \textbf{And} la tabla debería contener el cliente:
+           \begin{verbatim}
+...    22145685    Pedro    Cugat    Document    Female
+...    1980-06-25  Av Poeta Lugones 12    5,012    Single
+...    House  Complete University   pedro80@gmail.com
+       \end{verbatim}
+        \item \textbf{When} Se descarga el csv de la tabla.
+        \item \textbf{Then} El archivo se debería haber descargado correctamente.
+        \item \textbf{And} El archivo de clientes descargado debería ser el esperado 'expected\_clients.csv'.
+        \item \textbf{When} Se crea el filtro ``First Name'' con ``Romina''.
+        \item \textbf{Then} La tabla debería contener 1 filas.
+        \item \textbf{And} La tabla debería contener el cliente:
+        \begin{verbatim}
+...    32165498    Romina    Cugat    Document
+...    Female    1996-06-23  Av Poeta Lugones 12
+...    5,012    Single    House   Complete University
+...    romina96@gmail.com
+       \end{verbatim}
+       \item \textbf{When} Se descarga el csv de la tabla.
+       \item \textbf{Then} El archivo se debería haber descargado correctamente.
+        \item \textbf{And} El archivo de clientes descargado debería ser el esperado 'expected\_filter\_clients.csv'
+.
     \end{itemize}
     \\
     \hline
-    PAT-SYS-11 & Aceptar solicitud de asignación de caso &
+    PAT-SYS-11 & Aceptar y eliminar solicitudes de asignación de caso &
     \begin{itemize}
-        \item \textbf{Given} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Existe el panel ``Grupo 1'' para el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Existe una solicitud de asignación de la consulta ``consulta 1'' para el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Existe una solicitud de asignación de la consulta ``consulta 2'' para el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Se accedió a la plataforma como el usuario Profesor.
-        \item \textbf{And} El usuario Profesor tiene acceso al board ``Comisión Civil y Comercial''.
-        \item \textbf{And} Se navegó a la pestaña ``Boards/Comisión Civil y Comercial''.
+        \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía1
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    CREATED
+        \end{verbatim}
+        \item \textbf{And} Existe una solicitud de asignación de la consulta ``Garant\'ia1'' a la comisión ``Comisión A1''.
+        \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía2
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    CREATED
+        \end{verbatim}
+        \item \textbf{And} Existe una solicitud de asignación de la consulta ``Garant\'ia2'' a la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
+        \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Profesor''.
+        \item \textbf{And} Se navega a la pestaña ``Board/Comisión A1''.
         \newline
-        \item \textbf{When} Se arrastra el ticket ``consulta 1'' al panel ``Grupo 1''.
+        \item \textbf{When} Se acepta la solicitud de asignación de consulta ``Garant\'ia1'' y se asigna al panel ``Panel A1''.
         \newline
         
-        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``consulta 1'' en base de datos.
-        \item \textbf{And} El ticket ``consulta 1'' debería estar en el panel ``Grupo 1''.
-        \item \textbf{And} Debería existir una ``card'' de la consulta ``consulta 1'' al panel ``Grupo 1'' en base de datos.
+        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia1'' de la DB.
+        \item \textbf{And} El ticket ``Garant\'ia1'' debería estar en el primer panel ``Panel A1'' del board.
         \newline
         
-        \item \textbf{When} Se selecciona la opción ``rejected'' del menu del ticket ``consulta 2''.
+        \item \textbf{When} Se selecciona la opción rejected del menu del ticket ``Garant\'ia2''.
         \newline
 
-        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``consulta 2'' en base de datos.
-        \item \textbf{And} No debería existir una ``card'' de la consulta ``consulta 1'' al panel ``Grupo 1'' en base de datos.
+        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia2'' de la DB.
+        \item \textbf{And} No debería existir el ticket ``Garant\'ia2'' en el board.
         \newline
-    \end{itemize}
-    \\
-    \hline
-     PAT-SYS-12 & Realizar cambios de una consulta como usuario Profesor & 
-        \begin{itemize}
-        \item \textbf{Given} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Se accedió a la plataforma como el usuario Profesor.
-        \item \textbf{And} El usuario Profesor tiene acceso al board ``Comisión Civil y Comercial''.
-        \item \textbf{And} Existe una consulta titulada ``Defensa al consumidor'' para el cliente con DNI ``32165498'' el oponente ``Garcia Export'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO'' en la base de datos.
-        \item \textbf{And} Se navegó a la pestaña ``Board/Comisión Civil y Comercial''.
-        \newline
-    
-        \item \textbf{When} Se edita el campo ``Description'' a ``otro valor'' del ticket ``Defensa al consumidor''.
-        \newline
-    
-        \item \textbf{Then} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Description'' en ``otro valor''.
-        \item \textbf{And} El ticket ``Defensa al consumidor'' debería estar visible en un panel del board``Comisión Civil y Comercial''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el cliente con DNI ``32165498''.
-        \item \textbf{And} La vista de información de la consulta ``Defensa al consumidor'' debería contener el campo ``Opponent'' en ``Garcia Export''.
     \end{itemize}
     \\ 
     \hline
-     PAT-SYS-13 & Creación y elimnación de un comentario de una consulta & 
+     PAT-SYS-12 & Creación, edición y elimnación de un comentario de una consulta & 
         \begin{itemize}
-        \item \textbf{Given} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Se accedió a la plataforma como el usuario Profesor.
-        \item \textbf{And} El usuario Profesor tiene acceso al board ``Comisión Civil y Comercial''.
-        \item \textbf{And} Existe una consulta titulada ``Defensa al consumidor'' para el cliente con DNI ``32165498'' el oponente ``Garcia Export'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO'' en la base de datos.
-        \item \textbf{And} Se navegó a la pestaña ``Board/Comisión Civil y Comercial''.
+        \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
+        \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Divorcio
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+        \end{verbatim}
+        \item \textbf{And} Se accedió a la plataforma como usuario ``profesor''.
+        \item \textbf{And} Se navega a la pestaña ``Board/Comisión A1''.
         \newline
     
-        \item \textbf{When} Se agrega el comentario ``dummy''  al ticket ``Defensa al consumidor''.
+        \item \textbf{When} Se agrega el comentario ``dummy'' al ticket ``Divorcio''.
         \newline
     
-        \item \textbf{Then} La vista de coemntarios de la consulta ``Defensa al consumidor'' debería contener ``dummy''.
-        \item \textbf{And} El comentario``dummy'' para la consulta ``Defensa al consumidor'' debería existir en la base de datos.
+        \item \textbf{Then} La vista de comentarios de la consulta ``Divorcio'' debería contener ``dummy''.
+        \item \textbf{And} El comentario ``dummy'' para la consulta ``Divorcio'' debería existir en la DB.
         \newline
 
-        \item \textbf{When} Se elimina el comentario ``dummy''  al ticket ``Defensa al consumidor''.
+        \item \textbf{When} Se edita el comentario ``dummy'' a ``lore ipsum'' al ticket ``Divorcio''.
         \newline
     
-        \item \textbf{Then} La vista de comentarios de la consulta ``Defensa al consumidor'' no debería contener comentarios.
-        \item \textbf{And} No debería existir comentarios para la consulta ``Defensa al consumidor'' en la base de datos.
+        \item \textbf{Then} La vista de comentarios de la consulta ``Divorcio'' debería contener ``lore ipsum''.
+        \item \textbf{And} El comentario ``lore ipsum'' para la consulta ``Divorcio'' debería existir en la DB.
+        \item \textbf{And} La vista de comentarios de la consulta ``Divorcio'' NO debería contener ``dummy''.
+        \item \textbf{And} El comentario ``dummy'' para la consulta ``Divorcio'' NO debería existir en la DB.
+        \newline
+
+        \item \textbf{When} Se elimina el comentario ``lore ipsum'' al ticket ``Divorcio''.
+        \newline
+    
+        \item \textbf{Then} La vista de comentarios de la consulta ``Divorcio'' NO debería contener ``lore ipsum''
+        \item \textbf{And} El comentario ``lore ipsum'' para la consulta ``Divorcio'' NO debería existir en la DB.
+    \end{itemize}
+    \\
+    \hline
+     PAT-SYS-13 & Realizar cambios de una consulta como usuario Profesor & 
+        \begin{itemize}
+        \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professo'' en la DB.
+        \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Divorcio
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+        \end{verbatim}
+        \item \textbf{And} se accedió a la plataforma como usuario ``profesor''.
+        \item \textbf{And} se navega a la pestaña ``Board/Comisión A1''.
+        \newline
+    
+        \item \textbf{When} Se edita el campo ``Description'' a ``otra descripcion'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Opponent'' a ``otro oponente'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Progress State'' seleccionando la opción ``IN\_PROGRESS'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Tag'' a ``CODE-123: Divorcio'' del ticket ``Divorcio''.
+        \newline
+    
+        \item \textbf{Then} No debería existir el ticket ``Divorcio'' en el board.
+        \item \textbf{And} El ticket ``CODE-123: Divorcio'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Tag'' en ``CODE-123: Divorcio''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Description'' en ``otra descripcion''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Opponent'' en ``otro oponente''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
     \end{itemize}
     \\ 
     \hline
          PAT-SYS-14 & Creación y eliminación de eventos de una consulta & 
         \begin{itemize}
-        \item \textbf{Given} Existe el board ``Comisión Civil y Comercial'' en la base de datos.
-        \item \textbf{And} Se accedió a la plataforma como el usuario Profesor.
-        \item \textbf{And} El usuario Profesor tiene acceso al board ``Comisión Civil y Comercial''.
-        \item \textbf{And} Existe una consulta titulada ``Defensa al consumidor'' para el cliente con DNI ``32165498'' el oponente ``Garcia Export'' y descripcion ''Dummy`` asignada al board ``Comisión Civil y Comercial'' con estado de progreso ``TODO'' en la base de datos.
-        \item \textbf{And} Se navegó a la pestaña ``Board/Comisión Civil y Comercial''.
+        \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
+        \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
+        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Panel A1
+        ...    Comisión A1
+        ...    Divorcio
+        ...    32165498
+        ...    Samsung
+        ...    Dummy
+        ...    TODO
+        \end{verbatim}
+        \item \textbf{And} Se accedió a la plataforma como usuario ``profesor''.
+        \item \textbf{And} Se navega a la pestaña ``Board/Comisión A1''.
         \newline
     
-        \item \textbf{When} Se agrega el evento ``dummy'' el ``15-01-2024'' al ticket ``Defensa al consumidor''.
+        \item \textbf{When} Se agrega el evento para hoy al ticket ``Divorcio'' titulado ``Junta'' con descripción ``sucursal principal''.
         \newline
     
-        \item \textbf{Then} La vista calendario de la consulta ``Defensa al consumidor'' debería contener el evento ``dummy'' el ``15-01-2024''.
-        \item \textbf{And} El evento``dummy'' del ``15-01-2024'' para la consulta ``Defensa al consumidor'' debería existir en la base de datos.
+        \item \textbf{Then} La vista calendario de la consulta ``Divorcio'' debería contener el evento ``Junta'' el día de la fecha.
+        \item \textbf{And} El evento ``Junta'' hoy para la consulta ``Divorcio'' y descripción ``sucursal principal'' debería existir en la DB.
         \newline
 
-        \item \textbf{When} Se elimina el evento ``dummy'' el ``15-01-2024'' al ticket ``Defensa al consumidor''.
+        \item \textbf{When} Se elimina el evento ``Junta'' del ticket ``Divorcio''.
         \newline
         
-        \item \textbf{Then} La vista calendario de la consulta ``Defensa al consumidor'' NO debería contener eventos el ``15-01-2024'' .
-        \item \textbf{And} No debería haber eventos para la consulta ``Defensa al consumidor'' en base de datos.
+        \item \textbf{Then} La vista calendario de la consulta ``Divorcio'' NO debería contener el evento ``Junta''.
+        \item \textbf{And} No debería existir el evento ``Junta'' para la consulta ``Divorcio'' en la DB.
 
     \end{itemize}
     \\
     \hline
     PAT-SYS-15 & Creación edición y eliminación de un cliente como usuario Tomador de Caso & 
     \begin{itemize}
-        \item \textbf{Given} Se accedió a la plataforma como el usuario Tomador de Caso.
-        \item \textbf{And} Se navegó a la pestaña ``Clients''.
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Se navegó a la pestaña ``Control Panel - Clients''.
         \newline
-        \item \textbf{When} Se crea un nuevo cliente ``Marta Paez'' con DNI ``42301452''.
+        \item \textbf{When}  Se crea un nuevo cliente ``Marta Paez'' con DNI ``42301452''.
         \newline
-        \item \textbf{Then} El cliente con DNI ``42301452'' debería existir en base de datos.
+        \item \textbf{Then} El cliente con DNI ``42301452'' deber\'ia existir en DB.
         \newline
-        \item \textbf{When} Se edita el campo ``firstname'' a ``Martina'' del cliente con DNI ``42301452''.
+        \item \textbf{When} Se edita el campo ``family.partner\_salary'' a ``123'' del cliente con DNI ``42301452''.
         \newline
-        \item \textbf{Then} El campo ``firstname''del cliente con DNI ``42301452'' debería ser de ``Martina'' en base de datos.
+        \item \textbf{Then} El campo ``partner\_salary'' del cliente con DNI ``42301452'' deber\'ia ser ``123'' en DB.
         \newline
         \item \textbf{When} Se elimina el cliente con DNI ``42301452''.
         \newline
-        \item \textbf{Then} El cliente con DNI ``42301452'' no debería existir en base de datos.
+        \item \textbf{Then} El cliente con DNI ``42301452'' NO deber\'ia existir la DB.
     \end{itemize}
     \\
     \hline
-    PAT-SYS-16 & Creación de un cliente por Google Forms & 
+    PAT-SYS-16& [MANUAL]: Creación de un cliente por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
         \newline
@@ -610,7 +784,7 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-17 & Creación de una consulta por Google Forms & 
+    PAT-SYS-17 & [MANUAL]: Creación de una consulta por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
         \item \textbf{And} Existe el cliente con DNI ``42301452'' en base de datos.
@@ -621,7 +795,7 @@ Estas pruebas, realizadas a nivel de sistema, adoptan un enfoque de caja negra. 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-18 & Creación de un hijo por Google Forms & 
+    PAT-SYS-18 & [MANUAL]: Creación de un hijo por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
         \item \textbf{And} Existe el cliente con DNI ``42301452'' en base de datos.
