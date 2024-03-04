@@ -18,13 +18,14 @@
 \section{Archivo de configuración \textbf{.env}}\label{sec:anexo:configfile-env}
 Archivo de configuración de variables de entorno usadas por \textit{docker-compose.yml}.
 \begin{lstlisting}[caption={Archivo de configuración .env}, label={cod:.env}, captionpos=b]
-CMS_BACKEND_IMAGE=proyectopatrocinio/backend-patrocinio:v1.0.0
-CMS_FRONTEND_IMAGE=proyectopatrocinio/frontend-patrocinio:v1.0.0
+CMS_BACKEND_IMAGE=proyectopatrocinio/backend-patrocinio:v1.1.0
+CMS_FRONTEND_IMAGE=proyectopatrocinio/frontend-patrocinio:v1.1.0
 CMS_PROXY_PORT=8081
 CMS_NGINX_CONFIG_FILE=./resources/nginx.conf
 CMS_BACKEND_ENV_FILE=./resources/backend.env
 CMS_POSTGRES_ENV_FILE=./resources/postgres.env
 CMS_FRONTEND_ENV_FILE=./resources/frontend.env
+CMS_LOGO_FILE=./resources/logo.ico
 CMS_TEMPLATES_ACCOUNT_PATH=./resources/templates/account/
 CMS_TEMPLATES_NOTIFICATION_PATH=./resources/templates/notifications/
 CMS_TERMS_AND_POLICIES_FILE=./resources/terms_and_policies.md
