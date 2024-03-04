@@ -1,0 +1,46 @@
+\chapter{Trabajos Futuros}
+
+En esta sección, se describen áreas que podrían explorarse en futuros desarrollos y mejoras del sistema:
+
+\section{Servicio Unificado de Logs}
+
+Se propone la implementación de un sistema unificado de logs para monitorizar de manera eficiente las operaciones del sistema, facilitando la identificación de problemas y el seguimiento de eventos cruciales.
+
+\section{Cambio en la Interfaz de Consultoría}
+
+Dado que la interfaz actual de la página de consultoría presenta limitaciones con la estructura estilo Trello, especialmente al gestionar 86 comisiones, se sugieren mejoras como:
+
+\begin{itemize}
+\item La creación de cupos por consultoría.
+\item Un sistema de actualización del orden de paneles de forma semanal para optimizar la carga distribuida de casos.
+\item  Una barra de búsqueda, para buscar una comisión.
+\end{itemize}
+
+\section{Tests de Performance y Estrés}
+
+Como parte de futuras iteraciones, se recomienda implementar pruebas de rendimiento y estrés. Estas pruebas permitirán evaluar el comportamiento del sistema bajo cargas significativas, identificar posibles cuellos de botella y optimizar su desempeño.
+
+\section{Visualización Colaborativa en Tiempo Real}
+
+Se plantea la posibilidad de agregar la funcionalidad de visualización colaborativa en tiempo real, permitiendo a los usuarios ver los cambios realizados en el board de una comisión por otros usuarios, mejorando la interactividad y la colaboración.
+
+\section{Almacenamiento Encriptado}
+
+Se sugiere la implementación de almacenamiento encriptado para los archivos almacenados en el servidor, mejorando la seguridad y evitando el almacenamiento en texto plano, lo que contribuirá a proteger la confidencialidad de los datos.
+
+\section{Panel de Estadísticas y Campos Adicionales}
+
+Para ofrecer un análisis más completo, se propone la implementación de un panel de estadísticas para el usuario administrador en el sistema. Este panel permitiría medir la cantidad de casos según diferentes criterios. Además, se sugiere la introducción de un campo adicional llamado ``Tema'' para clasificar cada caso en base a su temática.
+
+Además, se recomienda que el panel de estadísticas permita clasificar los casos según diversos campos, incluyendo:
+\begin{itemize}
+\item Casos agrupados por Provincias Argentinas.
+\item Casos agrupados por Temáticas.
+\item Gráfico de cantidad de casos en el tiempo.
+\end{itemize}
+
+\section{Backup Automático}
+Se propone la implementación de un sistema de backup automático para garantizar la seguridad y disponibilidad de los datos. Este proceso automatizado debería realizar copias periódicas de la base de datos y los archivos del sistema.
+
+\section{Gestión de Secretos}
+Se plantea la opción de incorporar un gestor de secretos, como Vault de HashiCorp \cite{voult}, para manejar de manera más segura la información confidencial. La idea es evitar almacenar secretos como variables de entorno dentro de los contenedores y eliminar cualquier información sensible codificada directamente en los archivos de configuración, como contraseñas de bases de datos y credenciales del administrador de Django.

@@ -46,27 +46,27 @@ A continuación se presenta un ejemplo.
     \begin{tabular}{|l|l|p{5cm}|p{5cm}|}
         \hline
         \textbf{Campo} & \textbf{Tipo} & \textbf{Opciones} & \textbf{Descripción} \\ \hline
-        first\_name & String & & Nombre del cliente. \\ \hline
-        last\_name & String & & Apellido del cliente. \\ \hline
+        first\_name & String & & Nombre del consultante. \\ \hline
+        last\_name & String & & Apellido del consultante. \\ \hline
         id\_type & String & DOCUMENT, PASSPORT & Tipo de documento de identidad. \\ \hline
         id\_value & String & & Valor del documento de identidad. \\ \hline
-        birth\_date & String & & Fecha de nacimiento del cliente. \\ \hline
-        sex & String & MALE, FEMALE & Género del cliente. \\ \hline
-        marital\_status & String & SINGLE, MARRIED, DIVORCED, WIDOWER & Estado civil del cliente. \\ \hline
-        studies & String & INCOMPLETE\_PRIMARY, COMPLETE\_PRIMARY, INCOMPLETE\_SECONDARY, COMPLETE\_SECONDARY, INCOMPLETE\_TERTIARY, COMPLETE\_TERTIARY, INCOMPLETE\_UNIVERSITY, COMPLETE\_UNIVERSITY & Nivel de estudios del cliente. \\ \hline
-        email & String & & Correo electrónico del cliente. \\ \hline
-        housing\_type & String & HOUSE, DEPARTMENT, TRAILER, STREET\_SITUATION & Tipo de vivienda del cliente. \\ \hline
-        locality & Integer & & ID de localidad del cliente. \\ \hline
-        address & String & & Dirección del cliente. \\ \hline
-        postal & String & & Código postal del cliente. \\ \hline
-        employment & String & & Ocupación del cliente. \\ \hline
-        salary & String & & Salario del cliente. \\ \hline
-        other\_income & String & & Otros ingresos del cliente. \\ \hline
+        birth\_date & String & & Fecha de nacimiento del consultante. \\ \hline
+        sex & String & MALE, FEMALE & Género del consultante. \\ \hline
+        marital\_status & String & SINGLE, MARRIED, DIVORCED, WIDOWER & Estado civil del consultante. \\ \hline
+        studies & String & INCOMPLETE\_PRIMARY, COMPLETE\_PRIMARY, INCOMPLETE\_SECONDARY, COMPLETE\_SECONDARY, INCOMPLETE\_TERTIARY, COMPLETE\_TERTIARY, INCOMPLETE\_UNIVERSITY, COMPLETE\_UNIVERSITY & Nivel de estudios del consultante. \\ \hline
+        email & String & & Correo electrónico del consultante. \\ \hline
+        housing\_type & String & HOUSE, DEPARTMENT, TRAILER, STREET\_SITUATION & Tipo de vivienda del consultante. \\ \hline
+        locality & Integer & & ID de localidad del consultante. \\ \hline
+        address & String & & Dirección del consultante. \\ \hline
+        postal & String & & Código postal del consultante. \\ \hline
+        employment & String & & Ocupación del consultante. \\ \hline
+        salary & String & & Salario del consultante. \\ \hline
+        other\_income & String & & Otros ingresos del consultante. \\ \hline
         amount\_other\_income & String & & Monto de otros ingresos. \\ \hline
         amount\_retirement & String & & Monto de jubilación. \\ \hline
         amount\_pension & String & & Monto de pensión. \\ \hline
-        vehicle & String & & Información sobre vehículos del cliente. \\ \hline
-        tel & List & & Lista de números de teléfono del cliente. \\ \hline
+        vehicle & String & & Información sobre vehículos del consultante. \\ \hline
+        tel & List & & Lista de números de teléfono del consultante. \\ \hline
         partner\_salary & String & & Salario del cónyuge (si aplica). \\ \hline
     \end{tabular}
     \caption{Descripción de campos del Body}
@@ -169,7 +169,7 @@ POST
     \begin{tabular}{|l|l|l|p{7cm}|}
         \hline
         \textbf{Campo} & \textbf{Tipo} & \textbf{Opciones} & \textbf{Descripción} \\ \hline
-        client & String & & Identificación del cliente asociado a la consulta. \\ \hline
+        client & String & & Identificación del consultante asociado a la consulta. \\ \hline
         tag & String & & Etiqueta de la consulta. \\ \hline
         description & String & & Descripción detallada de la consulta. \\ \hline
         opponent & String & & Oponente o entidad involucrada en la consulta. \\ \hline
