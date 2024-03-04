@@ -776,7 +776,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \hline
     PAT-SYS-16& [MANUAL]: Creación de un consultante por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
+        \item \textbf{Given} Existe el formulario de google ``Nuevo Consultante'' configurado con credenciales del usuario con permisos de formulario.
         \newline
         \item \textbf{When} Se envía un formulario de registro para el consultante ``Dummy Client'' con DNI ``11111111'' por API usando el token en el header.
         \newline
@@ -786,7 +786,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \hline
     PAT-SYS-17 & [MANUAL]: Creación de una consulta por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
+        \item \textbf{Given} Existe el formulario de google ``Nueva Consulta'' configurado con credenciales del usuario con permisos de formulario.
         \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
         \newline
         \item \textbf{When} Se envía un formulario de consulta para el consultante con DNI ``11111111'' por API usando el token en el header.
@@ -797,7 +797,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \hline
     PAT-SYS-18 & [MANUAL]: Creación de un hijo por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
+        \item \textbf{Given} Existe el formulario de google ``Nuevo Hijo'' configurado con credenciales del usuario con permisos de formulario.
         \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
         \newline
         \item \textbf{When} Se envía un formulario de registro de hijos para el hijo con DNI ```33333333'' para el consultante con DNI ``11111111'' por API usando el token en el header.
