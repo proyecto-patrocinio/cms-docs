@@ -39,9 +39,7 @@ En esta sección se describen las herramientas y procesos utilizados para gestio
 \subsection{Dirección de Acceso}\label{sec:repo-git}
 La herramienta de control de versiones utilizada en este proyecto es GitHub. El acceso al repositorio se realiza a través del siguiente enlace:
 
-
 \href{https://github.com/orgs/proyecto-patrocinio/repositories}{Repositorio}
-
 
 \subsection{Plan del Esquema de Ramas}
 Se establece el siguiente plan para el esquema de ramas:
@@ -64,9 +62,9 @@ Esta rama consta del código la issue en Jira seguido de un slash '/' y una brev
 
 Las ramas Feature o funcionalidades utilizan la rama develop como rama primaria. Cuando una feature está terminada, se fusiona con la rama Dev. Las features no deben interactuar nunca directamente con Main.
 
-\subsection{Normas de Etiquetado y de Nombramiento de los Archivos}
+\subsection{Normas de Etiquetado y de Nombramiento de los Archivos}\label{subsec:semantic_version}
 
-Las versiones se numeran con la siguiente nomenclatura \textbf{MAYOR.MENOR.PATCH}
+Las versiones se numeran con la siguiente nomenclatura \textbf{MAYOR.MENOR.PATCH} siguiendo el estándar de versionamiento semántico 2.0.0 (Sember) \cite{semver}:
 \begin{itemize}
     \item \textbf{PATCH}: Aumenta sólo cuando se corrigen errores o se realiza un refactor que no afecta al funcionamiento, es decir, no realizan cambios en el comportamiento.
     \item \textbf{MENOR}: Se incrementa cuando se añade una nueva funcionalidad compatible con la versión anterior, si algún método se marca como obsoleto debe aumentarse la versión menor.
@@ -80,8 +78,9 @@ A continuación, se detallan las políticas establecidas para la gestión de ver
 
 \begin{itemize}
 \item \textbf{Control de Versiones en Main:} Únicamente se permitirá la inclusión de versiones en producción en la rama principal (Main).
+Se incluirá código debidamente testeado, dejando evidencias de las pruebas realizadas en cada entrega.
 
-\item \textbf{Numeración de Versiones en Releases:} En cada release, se procederá a modificar el primer número de la versión para reflejar cambios significativos. Esta práctica facilita la identificación y comprensión de las actualizaciones.
+\item \textbf{Numeración de Versiones en Releases:} En la fase de release, se generará el tag correspondiente en la rama \texttt{main}, siguiendo la estructura estándar de versionamiento semántico mencionada en la sección \ref{subsec:semantic_version}.
 
 \item \textbf{Etiquetado de Versiones:} Cada versión debe ser etiquetada, proporcionando una referencia clara y accesible para su seguimiento. Este etiquetado permitirá una identificación rápida y precisa de los puntos de lanzamiento.
 
@@ -94,7 +93,7 @@ A continuación, se detallan las políticas establecidas para la gestión de ver
 
 \subsection{Convención de Commits y Merge Request}
 
-Para mantener un estándar, se hace uso de commits semánticos. Estos siguen la siguiente estructura:
+Para mantener un estándar, se hace uso de commits semánticos, basados en la Convención de Commits Convencionales 1.0.0 \cite{conventional_commits}. Estos siguen la siguiente estructura:
 
 \texttt{PREFIX(CODE): DESCRIPTION}
 
@@ -153,20 +152,6 @@ En la raíz del directorio, destaca el archivo de composición para Docker Swarm
 
 En el repositorio \textit{cms-docs}, se concentra toda la documentación del proyecto. Desde detalles técnicos hasta guías de usuario, este repositorio actúa como una fuente centralizada de información para desarrolladores, administradores y usuarios finales.
 
-\subsection{Repositorio \textit{cms-test}}
-En el repositorio \textit{cms-test}, se encuentran todos los casos de prueba automatizados realizados con Robot Framework y Selenium.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\linewidth]{fig/test-directory.png}
-\caption{Estructura del directorio de pruebas en \textit{cms-test}.}
-\label{fig:test-directory}
-\end{figure}
-
-Dentro del directorio \textit{test}, se ubican los casos de prueba específicos. En el directorio \textit{resources} se almacenan los archivos utilizados en las pruebas. En el directorio \textit{library}, se encuentra la implementación de las \textit{keywords}, divididas en tres archivos: \textit{preconditions.robot}, \textit{executions.robot} y \textit{validations.robot}. Cada archivo contiene las \textit{keywords} relacionadas con las precondiciones (Given), acciones (When) y validaciones (Then) respectivamente. Por otro lado, en la carpeta \textit{keywords}, se agrupan las \textit{keywords} con la lógica para realizar diversas tareas.
-
-Por último, la carpeta \textit{evidences} se genera automáticamente después de ejecutar los tests, en la cual se recopilan las evidencias generadas para cada caso de prueba.
-
 \subsection{Repositorio \textit{proyecto-patrocinio}}
 
 El repositorio \textit{proyecto-patrocinio} constituye el núcleo esencial del proyecto, integrando tanto el backend como el frontend, junto con los scripts para Google App Script.
@@ -188,6 +173,21 @@ La carpeta \texttt{scripts-forms} se subdivide en cinco directorios. \texttt{Chi
 
 Dentro del directorio \texttt{.github}, la carpeta \texttt{workflows} contiene los pipelines para la integración continua del proyecto. Esta configuración garantiza una gestión eficiente del desarrollo y la implementación continua del proyecto.
 
+
+\subsection{Repositorio \textit{cms-test}}
+En el repositorio \textit{cms-test}, se encuentran todos los casos de prueba automatizados realizados con Robot Framework y Selenium.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{fig/test-directory.png}
+\caption{Estructura del directorio de pruebas en \textit{cms-test}.}
+\label{fig:test-directory}
+\end{figure}
+
+Dentro del directorio \textit{test}, se ubican los casos de prueba específicos. En el directorio \textit{resources} se almacenan los archivos utilizados en las pruebas. En el directorio \textit{library}, se encuentra la implementación de las \textit{keywords}, divididas en tres archivos: \textit{preconditions.robot}, \textit{executions.robot} y \textit{validations.robot}. Cada archivo contiene las \textit{keywords} relacionadas con las precondiciones (Given), acciones (When) y validaciones (Then) respectivamente, siguiendo la sintaxis de Gherkin \cite{gherkin_docs}.
+Por otro lado, en la carpeta \textit{keywords}, se agrupan las \textit{keywords} con la lógica para realizar diversas tareas.
+
+Por último, la carpeta \textit{evidences} se genera automáticamente después de ejecutar los tests, en la cual se recopilan las evidencias generadas para cada caso de prueba.
 
 \section{Herramientas de Gestión de Tareas y Defectos}
 
@@ -302,9 +302,9 @@ Además, se proporcionarán los nombres de las imágenes correspondientes al bac
 
 
 
-\section{Tablero de Control de Configuración - CCB}
+\section{Change Control Board - CCB}
 
-El Change Control Board (CCB), o Tablero de Control de Configuración en español, desempeña un papel crucial en la supervisión y evaluación de los cambios propuestos en la configuración del sistema, asegurando la implementación de modificaciones de manera estructurada y controlada.
+El Comité de Control de Cambios (CCB) se configura como un grupo de partes interesadas (stakeholders) encargadas de supervisar y tomar decisiones relacionadas con propuestas de cambios, requerimientos, hotfixes y otros aspectos inherentes al desarrollo de software. Su objetivo principal es garantizar la coherencia y alineación de estas modificaciones con los objetivos y requisitos establecidos, asegurando la implementación de modificaciones de manera estructurada y controlada.
 
 
 \subsection{Metodología Ágile}

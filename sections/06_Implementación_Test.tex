@@ -366,15 +366,15 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     PAT-SYS-5 & Creación y visualización de una consulta como usuario Tomador de Caso & 
     \begin{itemize}
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Ese accedió a la plataforma como usuario ``Tomador de Caso''.
         \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
         \newline
-        \item \textbf{When} Se crea la consulta ``Garantía'' con Cliente ``32165498'', oponente ``Samsung'' y descripcion ``Dummy''.
+        \item \textbf{When} Se crea la consulta ``Garantía'' con Cliente ``11111111'', oponente ``Samsung'' y descripcion ``Dummy''.
         \newline
-        \item \textbf{Then} La consulta ``Garant\'ia'' para el cliente con DNI ``32165498'' deberı\'ia existir en base de datos.
+        \item \textbf{Then} La consulta ``Garant\'ia'' para el cliente con DNI ``11111111'' deberı\'ia existir en base de datos.
         \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``CONSULTANCY''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``11111111''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Progress State'' en ``TODO''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
@@ -387,14 +387,14 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
         \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
         \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''
         \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Panel A1
         ...    Comisión A1
         ...    Garantía
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -404,7 +404,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{When} Se navega a la pestaña ``Board/Comisión A1''
         \newline
         \item \textbf{Then} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el cliente con DNI ``11111111''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
@@ -422,7 +422,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Panel A1
         ...    Comisión A1
         ...    Garantía1
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -432,7 +432,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Panel A1
         ...    Comisión A1
         ...    Garantía2
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    IN_PROGRESS
@@ -442,7 +442,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Panel A1
         ...    Comisión A1
         ...    Garantía3
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -459,14 +459,14 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     PAT-SYS-8 & Creación de solicitud de asignación de caso a una comisión &
     \begin{itemize}
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
         \item \textbf{And} Existe el board ``Comisión A1'' en la DB.
         \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
         \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Garantía
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    CREATED
@@ -488,16 +488,16 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
      PAT-SYS-9 & Visualización y manipulación de la tabla en la ventana consultations &
     \begin{itemize}
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
         \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
-    ...    Garantía1    32165498    Samsung
+    ...    Garantía1    11111111    Samsung
     ...    Dummy    TODO     CREATED
         \end{verbatim}
         \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
-        ...    Garantía2    32165498    Samsung
+        ...    Garantía2    11111111    Samsung
         ...    Dummy    TODO     CREATED
         \end{verbatim}
         \item \textbf{When} Se navegó a la pestaña ``Control Panel - Consultations''
@@ -505,12 +505,12 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Then} La tabla debería contener 2 filas.
         \item \textbf{And} La tabla debería contener la consulta:
         \begin{verbatim}
-        ...    Garantía1    32165498
+        ...    Garantía1    11111111
         ...    Samsung    Dummy
         \end{verbatim}
         \item \textbf{And} La tabla debería contener la consulta:
         \begin{verbatim}
-        ...    Garantía2    32165498
+        ...    Garantía2    11111111
         ...    Samsung    Dummy
         \end{verbatim}
 
@@ -525,7 +525,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{And} la tabla debería contener la consulta:
         \begin{verbatim}
         ...    Garantía2
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         \end{verbatim}
@@ -543,46 +543,46 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
         \item \textbf{And} Existe el cliente en la base de datos:
         \begin{verbatim}
-...    Romina    Cugat    DOCUMENT    32165498
+...    Emily    Davis    DOCUMENT    11111111
 ...    FEMALE    1996-06-23
-...    "Av Poeta Lugones 12"    5012    SINGLE
+...    "Dummy Street 01"    1111    SINGLE
 ...    HOUSE    COMPLETE_UNIVERSITY
-...    romina96@gmail.com
+...    emily96@gmail.com
         \end{verbatim}
         \item \textbf{And} Existe el cliente en la base de datos:
         \begin{verbatim}
-...    Pedro    Cugat    DOCUMENT    22145685
+...    John    Davis    DOCUMENT    22145685
 ...    FEMALE    1980-06-25
-...    "Av Poeta Lugones 12"    5012    SINGLE
-...    HOUSE    COMPLETE_UNIVERSITY   pedro80@gmail.com
+...    "Dummy Street 01"    1111    SINGLE
+...    HOUSE    COMPLETE_UNIVERSITY   john80@gmail.com
         \end{verbatim}
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
         \item \textbf{When} Se navegó a la pestaña ``Control Panel - Clients''.
         \item \textbf{Then} La tabla debería contener 2 filas.
         \item \textbf{And} La tabla debería contener el cliente:
         \begin{verbatim}
-...    32165498    Romina    Cugat    Document
+...    11111111    Emily    Davis    Document
 ...    Female    1996-06-23
-...    Av Poeta Lugones 12    5,012    Single    House
-...    Complete University   romina96@gmail.com
+...    Dummy Street 01    1,111    Single    House
+...    Complete University   emily96@gmail.com
         \end{verbatim}
         \item \textbf{And} la tabla debería contener el cliente:
            \begin{verbatim}
-...    22145685    Pedro    Cugat    Document    Female
-...    1980-06-25  Av Poeta Lugones 12    5,012    Single
-...    House  Complete University   pedro80@gmail.com
+...    22145685    John    Davis    Document    Female
+...    1980-06-25  Dummy Street 01    1,111    Single
+...    House  Complete University   john80@gmail.com
        \end{verbatim}
         \item \textbf{When} Se descarga el csv de la tabla.
         \item \textbf{Then} El archivo se debería haber descargado correctamente.
         \item \textbf{And} El archivo de clientes descargado debería ser el esperado 'expected\_clients.csv'.
-        \item \textbf{When} Se crea el filtro ``First Name'' con ``Romina''.
+        \item \textbf{When} Se crea el filtro ``First Name'' con ``Emily''.
         \item \textbf{Then} La tabla debería contener 1 filas.
         \item \textbf{And} La tabla debería contener el cliente:
         \begin{verbatim}
-...    32165498    Romina    Cugat    Document
-...    Female    1996-06-23  Av Poeta Lugones 12
-...    5,012    Single    House   Complete University
-...    romina96@gmail.com
+...    11111111    Emily    Davis    Document
+...    Female    1996-06-23  Dummy Street 01
+...    1,111    Single    House   Complete University
+...    emily96@gmail.com
        \end{verbatim}
        \item \textbf{When} Se descarga el csv de la tabla.
        \item \textbf{Then} El archivo se debería haber descargado correctamente.
@@ -594,11 +594,11 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     PAT-SYS-11 & Aceptar y eliminar solicitudes de asignación de caso &
     \begin{itemize}
         \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Garantía1
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    CREATED
@@ -607,7 +607,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{And} Existe una consulta con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Garantía2
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    CREATED
@@ -640,14 +640,14 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
         \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
         \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
         \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Panel A1
         ...    Comisión A1
         ...    Divorcio
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -683,16 +683,16 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
      PAT-SYS-13 & Realizar cambios de una consulta como usuario Profesor & 
         \begin{itemize}
         \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
-        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professo'' en la DB.
+        \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
         \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
         \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Panel A1
         ...    Comisión A1
         ...    Divorcio
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -710,7 +710,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Then} No debería existir el ticket ``Divorcio'' en el board.
         \item \textbf{And} El ticket ``CODE-123: Divorcio'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
         \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Tag'' en ``CODE-123: Divorcio''.
-        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el cliente con DNI ``32165498''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el cliente con DNI ``11111111''.
         \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Description'' en ``otra descripcion''.
         \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Opponent'' en ``otro oponente''.
         \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
@@ -722,14 +722,14 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Given} Existe el board ``Comisión A1'' en la DB.
         \item \textbf{And} Existe un usuario registrado activo con permisos ``common'' y ``professor'' en la DB.
         \item \textbf{And} El usuario profesor tiene acceso al board ``Comisión A1''.
-        \item \textbf{And} Existe un cliente con DNI ``32165498'' en la base de datos.
+        \item \textbf{And} Existe un cliente con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
         \item \textbf{And} Existe un ticket para el panel, de la comisión, con tag, DNI del cliente, oponente, descripción y estado:
         \begin{verbatim}
         ...    Panel A1
         ...    Comisión A1
         ...    Divorcio
-        ...    32165498
+        ...    11111111
         ...    Samsung
         ...    Dummy
         ...    TODO
@@ -760,17 +760,17 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
         \item \textbf{And} Se navegó a la pestaña ``Control Panel - Clients''.
         \newline
-        \item \textbf{When}  Se crea un nuevo cliente ``Marta Paez'' con DNI ``42301452''.
+        \item \textbf{When}  Se crea un nuevo cliente ``Dummy Client'' con DNI ``11111111''.
         \newline
-        \item \textbf{Then} El cliente con DNI ``42301452'' deber\'ia existir en DB.
+        \item \textbf{Then} El cliente con DNI ``11111111'' deber\'ia existir en DB.
         \newline
-        \item \textbf{When} Se edita el campo ``family.partner\_salary'' a ``123'' del cliente con DNI ``42301452''.
+        \item \textbf{When} Se edita el campo ``family.partner\_salary'' a ``123'' del cliente con DNI ``11111111''.
         \newline
-        \item \textbf{Then} El campo ``partner\_salary'' del cliente con DNI ``42301452'' deber\'ia ser ``123'' en DB.
+        \item \textbf{Then} El campo ``partner\_salary'' del cliente con DNI ``11111111'' deber\'ia ser ``123'' en DB.
         \newline
-        \item \textbf{When} Se elimina el cliente con DNI ``42301452''.
+        \item \textbf{When} Se elimina el cliente con DNI ``11111111''.
         \newline
-        \item \textbf{Then} El cliente con DNI ``42301452'' NO deber\'ia existir la DB.
+        \item \textbf{Then} El cliente con DNI ``11111111'' NO deber\'ia existir la DB.
     \end{itemize}
     \\
     \hline
@@ -778,31 +778,31 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de registro para el cliente ``Marta Paez'' con DNI ``42301452'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de registro para el cliente ``Dummy Client'' con DNI ``11111111'' por API usando el token en el header.
         \newline
-        \item \textbf{Then} El cliente con DNI ``42301452'' debería existir en base de datos.
+        \item \textbf{Then} El cliente con DNI ``11111111'' debería existir en base de datos.
     \end{itemize}
     \\
     \hline
     PAT-SYS-17 & [MANUAL]: Creación de una consulta por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
-        \item \textbf{And} Existe el cliente con DNI ``42301452'' en base de datos.
+        \item \textbf{And} Existe el cliente con DNI ``11111111'' en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de consulta para el cliente con DNI ``42301452'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de consulta para el cliente con DNI ``11111111'' por API usando el token en el header.
         \newline
-        \item \textbf{Then} La consulta del cliente con DNI ``42301452'' debería existir en base de datos.
+        \item \textbf{Then} La consulta del cliente con DNI ``11111111'' debería existir en base de datos.
     \end{itemize}
     \\
     \hline
     PAT-SYS-18 & [MANUAL]: Creación de un hijo por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
-        \item \textbf{And} Existe el cliente con DNI ``42301452'' en base de datos.
+        \item \textbf{And} Existe el cliente con DNI ``11111111'' en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de registro de hijos para el hijo con DNI ```55621145'' para el cliente con DNI ``42301452'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de registro de hijos para el hijo con DNI ```33333333'' para el cliente con DNI ``11111111'' por API usando el token en el header.
         \newline
-        \item \textbf{Then} El hijo con DNI ``55621145'' debería existir en base de datos.
+        \item \textbf{Then} El hijo con DNI ``33333333'' debería existir en base de datos.
     \end{itemize}
     \\
     \hline
