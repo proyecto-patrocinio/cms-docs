@@ -14,7 +14,7 @@ En esta sección se modelan las perspectivas de contexto o entorno, de interacci
 En la figura \ref{fig:c4-01}, se identifican dos sistemas externos que interactúan con la plataforma:
 
 \begin{itemize}
-    \item \textbf{Google Forms:} Utilizado para el envío de formularios, facilitando el ingreso de clientes y consultas.
+    \item \textbf{Google Forms:} Utilizado para el envío de formularios, facilitando el ingreso de consultantes y consultas.
     \item \textbf{Email:} El sistema de correo electrónico, como Gmail, se conecta a la plataforma para el envío de notificaciones y el registro de nuevos usuarios.
 \end{itemize}
 
@@ -78,7 +78,7 @@ Asimismo, a continuación, se presenta el diagrama de componentes del contenedor
 \caption{Diagrama de Componentes C4 del Contenedor Web App}
 \label{fig:c4-03-webapp}
 \end{figure}
-En este diagrama, se detalla la estructura del tablero (Board), que contiene paneles y, a su vez, cada panel alberga tarjetas (Cards). Además, se distinguen dos tipos de tableros: ``Consultancy'' para la consultoría y ``Commission Board'' para la pizarra de trabajo de cada comisión. Por separado, se encuentra el ``Control Panel'', que consta de dos tablas para consultas y clientes.
+En este diagrama, se detalla la estructura del tablero (Board), que contiene paneles y, a su vez, cada panel alberga tarjetas (Cards). Además, se distinguen dos tipos de tableros: ``Consultancy'' para la consultoría y ``Commission Board'' para la pizarra de trabajo de cada comisión. Por separado, se encuentra el ``Control Panel'', que consta de dos tablas para consultas y consultantes.
 
 
 \section{Arquitectura}
@@ -118,7 +118,7 @@ Como se observa en la imagen, los canales representan una consultoría y un cana
 
 
 \section{Implementación Arrastrar y soltar}
-Se utilizó el framework de JavaScript \textit{React-beautiful-dnd} para la creación de los ``Boards'', permitiendo al usuario tener una experiencia más intuitiva y rápida con la función de ``Arrastrar y soltar''. Se eligió esta metodología debido a que los usuarios estaban acostumbrados a usar Trello y les resultaba familiar este concepto.
+Se utilizó el framework de JavaScript \textit{React-beautiful-dnd} para la creación de los ``Boards'', permitiendo al usuario tener una experiencia más intuitiva y rápida con la función de ``Arrastrar y soltar''. La similitud con Trello fue determinada en la etapa de gobernanza de datos y reingeniería de procesos, donde participó el equipo del Patrocinio Jurídico Gratuito de la Facultad de Derecho.
 
 \begin{figure}[H] \centering \includegraphics[width=1\linewidth]{fig/drag-drop.png} \caption{Estructura Drag and Drop} \label{fig:enter-label} \end{figure}
 
