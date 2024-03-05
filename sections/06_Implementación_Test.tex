@@ -774,7 +774,52 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-16& [MANUAL]: Creación de un consultante por Google Forms & 
+    PAT-SYS-16 & Calendario desactivado para una consulta sin asignar & 
+    \begin{itemize}
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Existe un consultante con DNI ``11111111'' en la base de datos.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Existe una consulta con tag, DNI del consultante, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía
+        ...    11111111
+        ...    Samsung
+        ...    Dummy
+        ...    CREATED
+        \end{verbatim}
+        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \newline
+        \item \textbf{When} Se abre el detalle del ticket ``Garantía''.
+        \newline
+        \item \textbf{Then} El botón calendario debería estar desactivado.
+    \end{itemize}
+    \\
+    \hline
+    PAT-SYS-17 & Calendario desactivado para una consulta con solicitud pendiente de asignación & 
+    \begin{itemize}
+        \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
+        \item \textbf{And} Existe un consultante con DNI ``11111111'' en la base de datos.
+        \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
+        \item \textbf{And} Existe el board ``Comisión A1'' en la DB.
+        \item \textbf{And} Existe un panel llamado ``Panel A1'' para el board de la comisión ``Comisión A1''.
+        \item \textbf{And} Existe una consulta con tag, DNI del consultante, oponente, descripción y estado:
+        \begin{verbatim}
+        ...    Garantía
+        ...    11111111
+        ...    Samsung
+        ...    Dummy
+        ...    CREATED
+        \end{verbatim}
+        \item \textbf{And} Existe una solicitud de asignación de la consulta ``Garantía'' a la comision ``Comision A1''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \newline
+        \item \textbf{When} Se abre el detalle del ticket ``Garantía''.
+        \newline
+        \item \textbf{Then} El boton calendario deberia estar desactivado.
+    \end{itemize}
+    \\
+    \hline
+    PAT-SYS-18& [MANUAL]: Creación de un consultante por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe el formulario de google ``Nuevo Consultante'' configurado con credenciales del usuario con permisos de formulario.
         \newline
@@ -784,7 +829,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-17 & [MANUAL]: Creación de una consulta por Google Forms & 
+    PAT-SYS-19 & [MANUAL]: Creación de una consulta por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe el formulario de google ``Nueva Consulta'' configurado con credenciales del usuario con permisos de formulario.
         \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
@@ -795,7 +840,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-18 & [MANUAL]: Creación de un hijo por Google Forms & 
+    PAT-SYS-20 & [MANUAL]: Creación de un hijo por Google Forms & 
     \begin{itemize}
         \item \textbf{Given} Existe el formulario de google ``Nuevo Hijo'' configurado con credenciales del usuario con permisos de formulario.
         \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
