@@ -1,0 +1,48 @@
+\documentclass[12pt]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ESTILOS
+\usepackage{xcolor}
+
+% tablas
+\usepackage{booktabs}  % Para líneas horizontales mejoradas
+\usepackage{array}     % Para ajustar el espacio vertical en las celdas
+\usepackage{rotating}  % Para rotar tablas
+\usepackage{adjustbox} % Para ajustar texto a casillas
+\usepackage{colortbl}  % PAra colorear celdas
+\usepackage{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Paquetes LaTeX y estilos globales
+\input{etc/pkgs}
+\input{etc/style}
+
+% Comienzo del documento
+\begin{document}
+
+    % Portada y secciones no numeradas
+    \input{sections/00_portada}
+    
+    % Índice del documento y de figuras
+    \begingroup
+        % Los enlaces son normalmente azules, pero en los índices se configuran a negro
+        % para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+    \endgroup
+    
+    % Cambia el estilo de números de página a normal
+    \clearpage\pagenumbering{arabic}
+    
+    % Capítulos del trabajo
+    \input{sections/01_introduccion}
+    \input{sections/06_Implementación_Test}
+    \input{sections/XX_Conclusiones}
+
+
+
+% Fin del documento
+\end{document}

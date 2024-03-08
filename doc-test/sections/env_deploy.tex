@@ -1,0 +1,121 @@
+\chapter{Archivos de Configuración para el Despliegue de la Plataforma}\label{cap:apendix-configfile-deloy}
+\lstset{
+    language=sh,
+    backgroundcolor=\color{white},
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    captionpos=b,
+    breaklines=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single,
+    rulecolor=\color{black}
+}
+
+\section{Archivo de configuración \textbf{.env}}\label{sec:anexo:configfile-env}
+Archivo de configuración de variables de entorno usadas por \textit{docker-compose.yml}.
+\begin{lstlisting}[caption={Archivo de configuración .env}, label={cod:.env}, captionpos=b]
+CMS_BACKEND_IMAGE=proyectopatrocinio/backend-patrocinio:v1.2.0
+CMS_FRONTEND_IMAGE=proyectopatrocinio/frontend-patrocinio:v1.2.0
+CMS_PROXY_PORT=8081
+CMS_NGINX_CONFIG_FILE=./resources/nginx.conf
+CMS_BACKEND_ENV_FILE=./resources/backend.env
+CMS_POSTGRES_ENV_FILE=./resources/postgres.env
+CMS_FRONTEND_ENV_FILE=./resources/frontend.env
+CMS_LOGO_FILE=./resources/logo.ico
+CMS_TEMPLATES_ACCOUNT_PATH=./resources/templates/account/
+CMS_TEMPLATES_NOTIFICATION_PATH=./resources/templates/notifications/
+CMS_TERMS_AND_POLICIES_FILE=./resources/terms_and_policies.md
+\end{lstlisting}
+
+
+
+\section{Archivo de configuración \textbf{backend.env}}\label{sec:anexo:configfile-backend-env}
+Archivo de configuración de variables de entorno del servicio backend para el deploy de Docker Swarm:
+
+\begin{lstlisting}[caption={Archivo de configuración backend.env}, label={cod:backend.env}, captionpos=b]
+DEBUG=0
+DJANGO_ALLOWED_HOSTS=proyecto-patrocinio.fcefyn.unc.edu.ar databaseserver nginxserver appserver redis_server frontend
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=patrocinio_prod
+SQL_USER=patrocinio_api
+SQL_PASSWORD=****
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres
+EMAIL_HOST_USER=*****
+EMAIL_HOST_PASSWORD=******
+CORS_ALLOWED_ORIGINS=http://nginx:80 http://frontend:3000
+HOSTNAME=proyecto-patrocinio.fcefyn.unc.edu.ar
+CONSULTANCY_BOARD_NAME=CONSULTORIA
+DEFAULT_HTTP_PROTOCOL=https
+CSRF_TRUSTED_ORIGINS=http://nginx:80 http://frontend:3000 https://proyecto-patrocinio.fcefyn.unc.edu.ar
+LOG_ROTATE_DAYS=10
+SECRET_KEY=****
+DJANGO_SUPERUSER_USERNAME=*****
+DJANGO_SUPERUSER_PASSWORD=*****
+DJANGO_SUPERUSER_EMAIL=****
+\end{lstlisting}
+
+
+\section{Archivo de configuración \textbf{frontend.env}}\label{sec:anexo:configfile-frontend-env}
+Archivo de configuración de variables de entorno del servicio frontend para el deploy de Docker Swarm:
+
+\begin{lstlisting}[caption={Archivo de Configuración frontend.env}, label={cod:frontend.env}, captionpos=b]
+# Utilizar el dominio correspondiente
+REACT_APP_URL_BASE_API_REST_PATROCINIO=https://proyecto-patrocinio.fcefyn.unc.edu.ar/api/
+REACT_APP_WS_NOTIFICATION_PATH_PATROCINIO=wss://proyecto-patrocinio.fcefyn.unc.edu.ar/ws/notification/
+
+# No cambiar las siguientes variables
+REACT_APP_PATH_TERMS=terms/
+REACT_APP_PATH_LOGIN=auth/login/
+REACT_APP_PATH_LOGOUT=auth/logout/
+REACT_APP_PATH_RESET_PASSWORD=auth/password/reset/
+REACT_APP_PATH_RESET_PASSWORD_CONFIRM=auth/password/reset-confirm/
+REACT_APP_PATH_CHANGE_PASSWORD=auth/password/change/
+REACT_APP_PATH_USER=auth/user/
+REACT_APP_PATH_USER_BY_TOKEN=auth/user-by-token/?token=
+REACT_APP_PATH_RESEND_EMAIL=auth/resend-email/
+REACT_APP_PATH_SIGNUP=register/
+REACT_APP_PATH_USERBOARD=boardusers/boarduser/
+REACT_APP_PATH_USERBOARD_BY_USER=boardusers/boarduser/?user_id=
+REACT_APP_PATH_CARDS=cards/card/
+REACT_APP_PATH_CONSULTATIONS=consultations/consultation/
+REACT_APP_PATH_FILTER_CONSULTATIONS_BY_AVAILABILITY=consultations/consultation/?availability_state=
+REACT_APP_PATH_REQUEST_CARDS=consultations/request_consultation/
+REACT_APP_EXTRA_PATH_ACCEPT_REQUEST_CARDS=/accepted/
+REACT_APP_EXTRA_PATH_REJECTED_REQUEST_CARDS=/rejected/
+REACT_APP_PATH_BOARD=boards/board/
+REACT_APP_PATH_REQUEST_CONSULTANCY_BOARD=boards/board/consultancy_board/
+REACT_APP_EXTRA_PATH_BOARD_LOGS=/logs/?days=
+REACT_APP_PATH_PANELS=panels/panel/
+REACT_APP_PATH_CLIENTS=clients/client/
+REACT_APP_PATH_TEL=clients/tel/
+REACT_APP_PATH_PATRIMONY=clients/patrimony/
+REACT_APP_PATH_FAMILY=clients/family/
+REACT_APP_PATH_CHILDREN=clients/child/
+REACT_APP_PATH_LOCALITY=geography/locality/
+REACT_APP_PATH_PROVINCE=geography/province/
+REACT_APP_PATH_NATIONALITY=geography/nationality/
+REACT_APP_PATH_COMMENTS=comments/comment/
+REACT_APP_PATH_COMMENTS_BY_CONSULT=comments/comment/?consultation_id=
+REACT_APP_PATH_ATTACH_COMMENT_FILE=comments/file/
+REACT_APP_PATH_CALENDAR=calendars/calendar/
+REACT_APP_PATH_CALENDAR_EVENT=calendars/event/
+\end{lstlisting}
+
+
+
+\section{Archivo de configuración \textbf{portgres.env}}\label{sec:anexo:configfile-portgres-env}
+Archivo de configuración de variables de entorno de la base de datos para el deploy de Docker Swarm:
+
+\begin{lstlisting}[caption={Archivo de configuración portgres.env}, label={cod:portgres.env}, captionpos=b]
+POSTGRES_DB=patrocinio_prod
+POSTGRES_USER=patrocinio_api
+PGDATA=/var/lib/postgresql/data
+POSTGRES_PASSWORD=*****
+
+\end{lstlisting}
