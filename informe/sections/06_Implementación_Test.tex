@@ -72,10 +72,10 @@ Para el envío de la información recopilada a través de los formularios, se im
 Para obtener información adicional sobre las interfaces, consulte la sección de anexos \ref{cap:anexo-expoint-forms}.
 
 
-La implementación de estas funcionalidades se puede encontrar en el directorio \href{https://github.com/proyecto-patrocinio/proyecto-patrocinio/tree/main/com/script-forms}{proyecto-patrocinio/com/script-forms/} del repositorio del proyecto. Para incorporar estos archivos al formulario correspondiente, simplemente abra el editor del formulario, seleccione los tres puntos, vaya a "Editor de secuencias de comandos" y agregue los archivos correspondientes.
+La implementación de estas funcionalidades se puede encontrar en el directorio \href{https://github.com/proyecto-patrocinio/proyecto-patrocinio/tree/main/com/script-forms}{proyecto-patrocinio/com/script-forms/} del repositorio del proyecto. Para incorporar estos archivos al formulario correspondiente, simplemente abra el editor del formulario, seleccione los tres puntos, vaya a ``Editor de secuencias de comandos'' y agregue los archivos correspondientes.
 
 
-
+La Figura \ref{fig:app-script-code} muestra una captura de pantalla del código en Google Apps Script.
 
 \begin{figure}[H]
 \centering
@@ -84,7 +84,7 @@ La implementación de estas funcionalidades se puede encontrar en el directorio 
 \label{fig:app-script-code}
 \end{figure}
 
-Adicionalmente, se deben configurar los activadores siguiendo las instrucciones del README del repositorio. Por ejemplo, en el formulario ``Clients'', se necesitan los activadores: ``onFormOpen'' (explicado en la sección \ref{subsubsec:app-script-menu}), ``updateCredentials'' (explicado en la sección \ref{subsubsec:refresh-token}) y ``onFormSubmit''.
+Adicionalmente, se deben configurar los activadores (ver Figura \ref{fig:activadores} y \ref{fig:activador-api-send-form}) siguiendo las instrucciones del README del repositorio. Por ejemplo, en el formulario ``Clients'', se necesitan los activadores: ``onFormOpen'' (explicado en la sección \ref{subsubsec:app-script-menu}), ``updateCredentials'' (explicado en la sección \ref{subsubsec:refresh-token}) y ``onFormSubmit''.
 
 \begin{figure}[H]
 \centering
@@ -188,7 +188,7 @@ Ambos pipelines se inician en respuesta a eventos específicos, el push a las ra
 \label{fig:workflows-implementacion}
 \end{figure}
 
-En la figura, se observa cómo el pipeline del frontend se activó correctamente tras la fusión de la rama PAT-135 en la rama dev, mientras que el pipeline de la rama backend experimentó un fallo. Este enfoque resulta práctico e intuitivo, ya que GitHub proporciona una interfaz visual que permite verificar fácilmente el estado de los pipelines y revisar los registros en caso de errores.
+En la figura \ref{fig:workflows-implementacion}, se observa cómo el pipeline del frontend se activó correctamente tras la fusión de la rama PAT-135 en la rama dev, mientras que el pipeline de la rama backend experimentó un fallo. Este enfoque resulta práctico e intuitivo, ya que GitHub proporciona una interfaz visual que permite verificar fácilmente el estado de los pipelines y revisar los registros en caso de errores.
 
 \subsubsection{Política de Contraseñas Seguras}
 
@@ -235,7 +235,7 @@ Además, `CsrfViewMiddleware` verifica la cabecera `Origin' (si es proporcionada
 \subsection{Certificación de Seguridad y Cifrado SSL/TLS}
 
 La seguridad y privacidad de las comunicaciones son elementos críticos para garantizar una conexión segura entre los usuarios y nuestro servidor, por lo que se implementó el cifrado SSL/TLS mediante certificados proporcionados por Let's Encrypt, una autoridad de certificación que ofrece certificados gratuitos y automatiza el proceso de emisión y renovación.
-Esto, mitiga significativamente el riesgo de ataques de "Man-in-the-Middle" (Hombre en el Medio), garantizando que la información compartida entre el cliente y el servidor permanezca privada y no sea susceptible a manipulaciones indebidas.
+Esto, mitiga significativamente el riesgo de ataques de ``Man-in-the-Middle'' (Hombre en el Medio), garantizando que la información compartida entre el cliente y el servidor permanezca privada y no sea susceptible a manipulaciones indebidas.
 
 Se decidió integrar Let's Encrypt directamente en el servidor y redireccionar las solicitudes HTTP a través de HTTPS utilizando un proxy en el servidor NGINX existente (ver \ref{cap:apendix-nginx}.).
 
@@ -773,7 +773,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Then} El consultante con DNI ``11111111'' NO deber\'ia existir la DB.
     \end{itemize}
     \\
-    \hline
+     \hline
     PAT-SYS-16 & Calendario desactivado para una consulta sin asignar & 
     \begin{itemize}
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
@@ -819,33 +819,33 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \end{itemize}
     \\
     \hline
-    PAT-SYS-18& [MANUAL]: Creación de un consultante por Google Forms & 
+    PAT-SYS-18& [MANUAL]: Creación de un cliente por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe el formulario de google ``Nuevo Consultante'' configurado con credenciales del usuario con permisos de formulario.
+        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de registro para el consultante ``Dummy Client'' con DNI ``11111111'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de registro para el cliente ``Dummy Client'' con DNI ``11111111'' por API usando el token en el header.
         \newline
-        \item \textbf{Then} El consultante con DNI ``11111111'' debería existir en base de datos.
+        \item \textbf{Then} El cliente con DNI ``11111111'' debería existir en base de datos.
     \end{itemize}
     \\
     \hline
     PAT-SYS-19 & [MANUAL]: Creación de una consulta por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe el formulario de google ``Nueva Consulta'' configurado con credenciales del usuario con permisos de formulario.
-        \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
+        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
+        \item \textbf{And} Existe el cliente con DNI ``11111111'' en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de consulta para el consultante con DNI ``11111111'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de consulta para el cliente con DNI ``11111111'' por API usando el token en el header.
         \newline
-        \item \textbf{Then} La consulta del consultante con DNI ``11111111'' debería existir en base de datos.
+        \item \textbf{Then} La consulta del cliente con DNI ``11111111'' debería existir en base de datos.
     \end{itemize}
     \\
     \hline
     PAT-SYS-20 & [MANUAL]: Creación de un hijo por Google Forms & 
     \begin{itemize}
-        \item \textbf{Given} Existe el formulario de google ``Nuevo Hijo'' configurado con credenciales del usuario con permisos de formulario.
-        \item \textbf{And} Existe el consultante con DNI ``11111111'' en base de datos.
+        \item \textbf{Given} Existe un token de sesión para un usuario con permisos de formulario en base de datos.
+        \item \textbf{And} Existe el cliente con DNI ``11111111'' en base de datos.
         \newline
-        \item \textbf{When} Se envía un formulario de registro de hijos para el hijo con DNI ```33333333'' para el consultante con DNI ``11111111'' por API usando el token en el header.
+        \item \textbf{When} Se envía un formulario de registro de hijos para el hijo con DNI ```33333333'' para el cliente con DNI ``11111111'' por API usando el token en el header.
         \newline
         \item \textbf{Then} El hijo con DNI ``33333333'' debería existir en base de datos.
     \end{itemize}

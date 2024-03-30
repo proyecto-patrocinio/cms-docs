@@ -42,14 +42,14 @@ La herramienta de control de versiones utilizada en este proyecto es GitHub. El 
 \href{https://github.com/orgs/proyecto-patrocinio/repositories}{Repositorio}
 
 \subsection{Plan del Esquema de Ramas}
-Se establece el siguiente plan para el esquema de ramas:
+Se establece el siguiente plan para el esquema de ramas, como se muestra en la Figura \ref{fig:branch-plan}:
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{fig/branches.png}
     \caption{Ramas de Git}
-    \label{fig:enter-label}
+    \label{fig:branch-plan}
 \end{figure}
 
 
@@ -176,6 +176,7 @@ Dentro del directorio \texttt{.github}, la carpeta \texttt{workflows} contiene l
 
 \subsection{Repositorio \textit{cms-test}}
 En el repositorio \textit{cms-test}, se encuentran todos los casos de prueba automatizados realizados con Robot Framework y Selenium.
+La estructura del directorio de pruebas se puede visualizar en la Figura \ref{fig:test-directory}. 
 
 \begin{figure}[H]
 \centering
@@ -266,7 +267,7 @@ Un \textbf{WorkFlow} o flujo de trabajo es un proceso automatizado configurable 
 
 En el contexto de este proyecto, se han empleado dos flujos de trabajo, uno dedicado al frontend y otro al backend, alojados en el repositorio \textit{proyecto-patrocinio} (ver \ref{sec:estr-directory}).
 
-Para ambos pipelines, se establecen disparadores que inician el flujo de trabajo compuesto por dos etapas principales: \texttt{ci} y \texttt{cd}.
+Para ambos pipelines, se establecen disparadores que inician el flujo de trabajo compuesto por dos etapas principales: \texttt{ci} y \texttt{cd} (consulte la Figura \ref{fig:ci-cd}).
 
 - \textbf{\texttt{triggers}:} La ejecución de los pipelines se configura en respuesta a eventos específicos. Estos eventos incluyen el lanzamiento de una nueva versión (\textit{release}) o la realización de un \textit{push} a las ramas \texttt{main} o \texttt{dev}. En el caso de las ramas \texttt{dev} o \texttt{main}, los pasos del flujo presentan una ligera variación para adecuarse a la gestión de versiones y etiquetas de las imágenes destinadas a Docker Hub.
 

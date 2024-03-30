@@ -39,4 +39,5 @@ Además, se recomienda que el panel de estadísticas permita clasificar los caso
 Se propone la implementación de un sistema de backup automático para garantizar la seguridad y disponibilidad de los datos. Este proceso automatizado debería realizar copias periódicas de la base de datos y los archivos del sistema.
 
 \section{Gestión de Secretos}
+
 Se plantea la opción de incorporar un gestor de secretos, como Vault de HashiCorp \cite{voult}, para manejar de manera más segura la información confidencial. La idea es evitar almacenar secretos como variables de entorno dentro de los contenedores y eliminar cualquier información sensible codificada directamente en los archivos de configuración, como contraseñas de bases de datos y credenciales del administrador de Django.

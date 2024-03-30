@@ -33,7 +33,7 @@ En el contexto de este proyecto, se implementará un pipeline de CI/CD que utili
 
 En términos de seguridad informática, CSRF o Cross-Site Request Forgery, puede entenderse como una ``vulnerabilidad que explota la confianza que un sitio web tiene en las solicitudes originadas desde el navegador del usuario'' \cite{csrf}.
 
-En otras palabras, CSRF implica que un atacante logra engañar al navegador del usuario para que realice acciones no deseadas en otro sitio web donde el usuario ya ha iniciado sesión. Este tipo de ataque se basa en la premisa de que, si un usuario ya ha autenticado su identidad en un sitio web, su navegador enviará solicitudes confiables a ese sitio, incluso si esas solicitudes son iniciadas desde otro sitio web malicioso .
+En otras palabras, CSRF implica que un atacante logra engañar al navegador del usuario para que realice acciones no deseadas en otro sitio web donde el usuario ya ha iniciado sesión. Este tipo de ataque se basa en la premisa de que, si un usuario ya ha autenticado su identidad en un sitio web, su navegador enviará solicitudes confiables a ese sitio, incluso si esas solicitudes son iniciadas desde otro sitio web malicioso. La Figura \ref{fig:csrf-attack} ilustra un ejemplo de un ataque CSRF.
 
 
 \begin{figure}[h]
@@ -89,7 +89,7 @@ Según lo desarrollado en el artículo de IONOS \cite{sockets} se explican los s
 
 Un \textbf{socket} es un mecanismo de comunicación que permite que dos procesos en diferentes máquinas o en la misma máquina se comuniquen entre sí. En términos simples, un socket proporciona una interfaz para la comunicación entre procesos.
 
-Un \textbf{WebSocket} es un protocolo de comunicación bidireccional en tiempo real sobre un único socket TCP. A diferencia de HTTP, que sigue un modelo de solicitud-respuesta, los WebSockets permiten la comunicación en ambas direcciones en cualquier momento.
+Un \textbf{WebSocket} es un protocolo de comunicación bidireccional en tiempo real sobre un único socket TCP. A diferencia de HTTP, que sigue un modelo de solicitud-respuesta, los WebSockets permiten la comunicación en ambas direcciones en cualquier momento. La Figura \ref{fig:sockets} ilustra el concepto de Web Sockets.
 
 El proceso típico para establecer una conexión WebSocket es:
 \begin{itemize}
@@ -110,7 +110,7 @@ El proceso típico para establecer una conexión WebSocket es:
 
 \section{Patrón de Diseño Pub/Sub}\label{sec:pub-sub}
 
-El patrón de diseño Publicador-Suscriptor, es una solución que permite a una aplicación comunicar eventos de manera asincrónica a múltiples consumidores interesados, evitando la necesidad de establecer una conexión directa entre los emisores y receptores. En este enfoque, un componente llamado "publicador" emite eventos a través de canales temáticos, y los "suscriptores" que están interesados en eventos específicos se registran en dichos canales.
+El patrón de diseño Publicador-Suscriptor, es una solución que permite a una aplicación comunicar eventos de manera asincrónica a múltiples consumidores interesados, evitando la necesidad de establecer una conexión directa entre los emisores y receptores.  La Figura \ref{fig:pub-sus} muestra una representación gráfica del patrón, un componente llamado ``publicador'' emite eventos a través de canales temáticos, y los "suscriptores" que están interesados en eventos específicos se registran en dichos canales.
 
 
 \begin{figure}[h]

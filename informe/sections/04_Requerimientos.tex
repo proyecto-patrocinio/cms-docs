@@ -141,7 +141,7 @@ Consulte en el anexo, los Diagramas~\ref{mat:der}, \ref{mat:der2} y \ref{mat:der
 
 
 
-A continuación se presenta el diagrama de Entidad-Relación. En celeste se resalta la relación muchos a muchos, la cual ha sido reemplazada por una tabla intermedia denominada "board-user". Y en un azul mas oscura se representa la herencia de Person con User y Client.
+A continuación se presenta el diagrama de Entidad-Relación (Figura \ref{fig:der}). En celeste se resalta la relación muchos a muchos, la cual ha sido reemplazada por una tabla intermedia denominada "board-user". Y en un azul mas oscura se representa la herencia de Person con User y Client.
 
 \begin{figure}[H]
     \centering
@@ -152,7 +152,7 @@ A continuación se presenta el diagrama de Entidad-Relación. En celeste se resa
 
 \newpage
 
-La implementación del modelo se lleva a cabo en Django. Sin embargo, para simplificar la explicación, se han omitido otras entidades relacionadas al usuario propias de Django, como tokens, grupos, etc. A continuación, se presenta el resultado visualizado mediante DBeaver, utilizado como gestor de la base de datos.
+La implementación del modelo se lleva a cabo en Django. Sin embargo, para simplificar la explicación, se han omitido otras entidades relacionadas al usuario propias de Django, como tokens, grupos, etc. A continuación, en la  figura \ref{fig:dbeaver} se presenta el resultado visualizado mediante DBeaver, utilizado como gestor de la base de datos.
 
 \begin{figure}[H]
     \centering
@@ -206,13 +206,13 @@ El diseño del tablero de trabajo adopta una lógica similar a la implementada e
 \end{figure}
 
 
-En el lado izquierdo de la imagen, se sitúa el panel de entrada, destinado a recibir las solicitudes entrantes. A la derecha, se encuentran paneles específicos de la comisión, ajustados según las necesidades particulares. La funcionalidad del botón "+" simplifica la creación de paneles adicionales. Por ejemplo, se podrían generar tableros para representar el estado de la consulta o agruparlos según profesor.
+En el lado izquierdo de la de la figura (\ref{fig:board}), se sitúa el panel de entrada, destinado a recibir las solicitudes entrantes. A la derecha, se encuentran paneles específicos de la comisión, ajustados según las necesidades particulares. La funcionalidad del botón "+" simplifica la creación de paneles adicionales. Por ejemplo, se podrían generar tableros para representar el estado de la consulta o agruparlos según profesor.
 
 Finalmente, las tarjetas blancas dentro de los paneles representan cada consulta con una etiqueta referente.
 
 
 \subsection{Inicio de Sesión}
-Para garantizar la seguridad y autenticación de los usuarios, se ha implementado se tiene como requisito una interfaz de inicio de sesión al sistema. La Figura \ref{fig:enter-label} presenta el diseño visual asociado con la página de inicio de sesión.
+Para garantizar la seguridad y autenticación de los usuarios, se ha implementado se tiene como requisito una interfaz de inicio de sesión al sistema. La Figura \ref{fig:signin} presenta el diseño visual asociado con la página de inicio de sesión.
 
 \begin{figure}[H]
     \centering

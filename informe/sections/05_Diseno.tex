@@ -42,6 +42,8 @@ Si profundizamos, observamos cómo está conformado el sistema a nivel de conten
 
 Un ``contenedor'' no se limita a la noción convencional de un contenedor Docker; más bien, representa una aplicación, un almacén de datos o cualquier entidad desplegable de manera independiente, abarcando desde aplicaciones web hasta sistemas de archivos.
 
+La figura \ref{fig:c4-02} muestra el diagrama de contenedores que se explicará a continuación.
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\linewidth]{fig/c4-2.png}
@@ -62,7 +64,7 @@ Un ``contenedor'' no se limita a la noción convencional de un contenedor Docker
 \subsection{Modelo de Componentes}
 A continuación, se desglosan algunos contenedores para identificar los componentes estructurales principales y sus interacciones mediante los siguientes diagramas.
 
-En el diagrama del contenedor CMS Core, se presentan los componentes clave y sus relaciones internas.
+En el diagrama del contenedor CMS Core (Figura \ref{fig:c4-03-cmscore}), se presentan los componentes clave y sus relaciones internas.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{fig/container-cms-core.png}
@@ -71,7 +73,7 @@ En el diagrama del contenedor CMS Core, se presentan los componentes clave y sus
 \end{figure}
 Este diagrama ilustra cómo el contenedor CMS Core incorpora cada componente de la API REST de manera modular, junto con la interfaz de usuario proporcionada por Django para la administración.
 
-Asimismo, a continuación, se presenta el diagrama de componentes del contenedor Web App con sus principales elementos.
+Asimismo, a continuación, se presenta el diagrama de componentes del contenedor Web App con sus principales elementos (ver Figura \ref{fig:c4-03-webapp}).
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{fig/container-web-app.png}
@@ -114,13 +116,15 @@ En relación a la sección anterior, respecto al sistema de notificaciones en ti
     \label{fig:channels-redis}
 \end{figure}
 
-Como se observa en la imagen, los canales representan una consultoría y un canal por cada comisión.
+Como se observa en la figura \ref{fig:channels-redis}, los canales representan una consultoría y un canal por cada comisión.
 
 
 \section{Implementación Arrastrar y soltar}
 Se utilizó el framework de JavaScript \textit{React-beautiful-dnd} para la creación de los ``Boards'', permitiendo al usuario tener una experiencia más intuitiva y rápida con la función de ``Arrastrar y soltar''. La similitud con Trello fue determinada en la etapa de gobernanza de datos y reingeniería de procesos, donde participó el equipo del Patrocinio Jurídico Gratuito de la Facultad de Derecho.
 
-\begin{figure}[H] \centering \includegraphics[width=1\linewidth]{fig/drag-drop.png} \caption{Estructura Drag and Drop} \label{fig:enter-label} \end{figure}
+La estructura de ``Arrastrar y soltar'' se muestra en la Figura \ref{fig:drag-drop}.
+
+\begin{figure}[H] \centering \includegraphics[width=1\linewidth]{fig/drag-drop.png} \caption{Estructura Drag and Drop} \label{fig:drag-drop} \end{figure}
 
 \begin{itemize}
     \item \textbf{DragDropContext}: Envuelve la parte de la aplicación para la que desea habilitar la función de arrastrar y soltar.
@@ -128,7 +132,7 @@ Se utilizó el framework de JavaScript \textit{React-beautiful-dnd} para la crea
     \item \textbf{Draggable}: Estos son los elementos que se pueden arrastrar.
 \end{itemize}
 
-A continuación, se presenta un diagrama de componentes que ilustra la estructura y relación de los elementos clave en la implementación del patrón de "Arrastrar y soltar" en el frontend.
+A continuación, se presenta un diagrama de componentes que ilustra la estructura y relación de los elementos clave en la implementación del patrón de ``Arrastrar y soltar'' en el frontend.
 
 \begin{figure}[H]
 \centering
@@ -137,4 +141,4 @@ A continuación, se presenta un diagrama de componentes que ilustra la estructur
 \label{fig:drag-drop-componentes}
 \end{figure}
 
-En la figura, se pueden observar diferentes tipos de pizarras, paneles y tickets. Cada pizarra representa un área de trabajo donde se organizan los paneles. Para cada pizarra, existen dos tipos de paneles: uno para la entrada de tickets y otro para la administración de los tickets propios de la consultoría o comisión, según corresponda. Los tickets se dividen en tres categorías: Solicitud, Consulta y Card. Los tickets de Solicitud se refieren a la solicitud de asignación de una consulta. Los tickets de Consulta son aquellos que se encuentran en la consultoría sin asignar, mientras que los tickets Card se refieren a los tickets asignados a una comisión.
+En la figura \ref{fig:drag-drop-componentes}, se pueden observar diferentes tipos de pizarras, paneles y tickets. Cada pizarra representa un área de trabajo donde se organizan los paneles. Para cada pizarra, existen dos tipos de paneles: uno para la entrada de tickets y otro para la administración de los tickets propios de la consultoría o comisión, según corresponda. Los tickets se dividen en tres categorías: Solicitud, Consulta y Card. Los tickets de Solicitud se refieren a la solicitud de asignación de una consulta. Los tickets de Consulta son aquellos que se encuentran en la consultoría sin asignar, mientras que los tickets Card se refieren a los tickets asignados a una comisión.

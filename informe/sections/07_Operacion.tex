@@ -285,7 +285,7 @@ Una vez que la plataforma esté en funcionamiento, el administrador debe acceder
 \end{figure}
 
 
-A continuación, el administrador debe crear todas las pizarras de trabajo para cada comisión existente en el patrocinio a través de la sección de \textit{Boards}.
+A continuación, el administrador debe crear todas las pizarras de trabajo para cada comisión existente en el patrocinio a través de la sección de \textit{Boards} (ver Figura \ref{fig:boards-admin}).
 
 \begin{figure}[H]
     \centering
@@ -304,7 +304,7 @@ Para poder registrar un usuario, El usuario deberá seguir los siguientes pasos:
 
 \begin{enumerate}
     \item Ingresar a la página web y seleccionar la opción ``Don't have an account? Sign Up''.
-    \item Completar los datos requeridos, acepte los términos y condiciones, y haga clic en el botón ``Sign up''.
+    \item Completar los datos requeridos, acepte los términos y condiciones, y haga clic en el botón ``Sign up'', como se muestra en la Figura \ref{fig:signup}.
 
 
     \begin{figure}[H]
@@ -314,7 +314,7 @@ Para poder registrar un usuario, El usuario deberá seguir los siguientes pasos:
         \label{fig:signup}
     \end{figure}
 
-    \item Revisar la casilla de correlo electrónico y seleccionar el enlace en el correo enviado.
+    \item Revisar la casilla de correlo electrónico y seleccionar el enlace en el correo enviado (ver Figura \ref{fig:confirm-email}).
 
     \textbf{Nota}: El formato de este email, fue previamente configurado con los templates en la etapa de configuración de software.
 
@@ -329,7 +329,7 @@ La página lo redirigirá a la principal, pero aún el usuario no podrá acceder
 
 \begin{enumerate}
     \item Ingresar a la sección de administración y dirigirse a la pestaña de usuarios.
-    \item Seleccionar el nuevo usuario y editar la sección de permisos.
+    \item Seleccionar el nuevo usuario y editar la sección de permisos, como se muestra en la figura \ref{fig:user-permission}.
 
 
     \begin{figure}[H]
@@ -347,13 +347,13 @@ Si el usuario es un miembro de una comisión, el administrador también deberá 
 
 \begin{enumerate}
     \item Ingresar a la sección ``Board Users''.
-    \item Crear la relación del usuario con la comisión correspondiente.
+    \item Crear la relación del usuario con la comisión correspondiente, como se observa en la figura \ref{fig:board-user-2}.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\linewidth]{fig/board-user.png}
         \caption{Creación de Relación Usuario-Comisión.}
-        \label{fig:board-user}
+        \label{fig:board-user-1}
     \end{figure}
     
     \begin{figure}[H]
@@ -364,7 +364,7 @@ Si el usuario es un miembro de una comisión, el administrador también deberá 
     \end{figure}
 \end{enumerate}
 
-Después de completar estos pasos, el usuario podrá iniciar sesión correctamente en la web desde la página de inicio de sesión.
+Después de completar estos pasos, el usuario podrá iniciar sesión correctamente en la web desde la página de inicio de sesión. La Figura \ref{fig:signin-real-page-2} muestra la página de inicio de sesión.
 
 \begin{figure}[H]
     \centering
@@ -426,7 +426,7 @@ Los grupos de permisos de usuarios se encuentran en la sección "Groups" de la p
 
 \section{Administración}\label{sec:administracion}
 
-La página de administración proporciona una interfaz amigable para visualizar y gestionar todos los datos del sistema. Al ingresar a la página principal, se presenta una disposición organizada de los datos agrupados en secciones. Además, a la derecha, se muestra un historial de acciones recientes.
+La página de administración (ver Figura \ref{fig:admin-interface}) proporciona una interfaz amigable para visualizar y gestionar todos los datos del sistema. Al ingresar a la página principal, se presenta una disposición organizada de los datos agrupados en secciones. Además, a la derecha, se muestra un historial de acciones recientes.
 
 \begin{figure}[H]
     \centering
@@ -440,7 +440,7 @@ En esta interfaz, los administradores pueden realizar diversas acciones, como ag
 
 
 \section{Tablero de Trabajo de Consultoría}
-La página de consultoría es responsable de la administración de las consultas. Aquí, los tomadores de casos pueden revisar las consultas entrantes, representadas como tickets generados a través de formularios de Google. Pueden analizarlas y verificar si cumplen con las condiciones para ser patrocinadas por la entidad. Los tomadores de casos tienen la capacidad de crear, editar y eliminar consultas o enviarlas a una comisión para solicitar patrocinio.
+La página de consultoría (ver Figura \ref{fig:consultancy-real-page}) es responsable de la administración de las consultas. Aquí, los tomadores de casos pueden revisar las consultas entrantes, representadas como tickets generados a través de formularios de Google. Pueden analizarlas y verificar si cumplen con las condiciones para ser patrocinadas por la entidad. Los tomadores de casos tienen la capacidad de crear, editar y eliminar consultas o enviarlas a una comisión para solicitar patrocinio.
 
 La página está estructurada mediante paneles. El panel izquierdo contiene las consultas sin asignar, mientras que los paneles siguientes representan comisiones, cada uno con los tickets de las solicitudes de asignación. Para asignar una consulta a una comisión, basta con arrastrar la consulta al tablero de la comisión deseada. También es posible eliminar la solicitud volviendo a arrastrar el ticket al panel izquierdo. Para eliminar el ticket, simplemente posicione el mouse sobre el mismo, seleccione el menú que aparecerá y elija la opción "delete".
 
@@ -451,7 +451,7 @@ La página está estructurada mediante paneles. El panel izquierdo contiene las 
     \label{fig:consultancy-real-page}
 \end{figure}
 
-Es importante mantener un registro del estado de cada comisión. Cada panel cuenta con un popper en el sector superior derecho que, al hacer clic, muestra la cantidad de consultas asignadas y la cantidad de consultas por estado (por hacer, en progreso o pausadas/bloqueadas). Además, incluye un historial de las asignaciones de los últimos 10 días, que muestra el ``tag'' de la consulta y la fecha de asignación.
+Es importante mantener un registro del estado de cada comisión. Cada panel cuenta con un popper en el sector superior derecho que, al hacer clic, muestra la cantidad de consultas asignadas y la cantidad de consultas por estado (por hacer, en progreso o pausadas/bloqueadas). Además, como se ve en la figura \ref{fig:consultancy-logs-1}, incluye un historial de las asignaciones de los últimos 10 días, que muestra el ``tag'' de la consulta y la fecha de asignación.
 
 \begin{figure}[H]
     \centering
@@ -460,7 +460,7 @@ Es importante mantener un registro del estado de cada comisión. Cada panel cuen
     \label{fig:consultancy-logs-1}
 \end{figure}
 
-Cuando la cantidad de consultas asignadas a la comisión en los últimos 10 días es extensa, aparecerá la opción ``show more'', que expandirá un panel con todas las asignaciones.
+Cuando la cantidad de consultas asignadas a la comisión en los últimos 10 días es extensa, aparecerá la opción ``show more'', que expandirá un panel con todas las asignaciones (ver Figura \ref{fig:consultancy-logs-2}).
 
 \begin{figure}[H]
     \centering
@@ -469,7 +469,7 @@ Cuando la cantidad de consultas asignadas a la comisión en los últimos 10 día
     \label{fig:consultancy-logs-2}
 \end{figure}
 
-El Usuario Tomador de Caso tiene la capacidad de crear consultas a través de la página de consultoría. Para hacerlo, se selecciona el botón con el símbolo ``+'' ubicado en el panel de entrada, y luego se completa el formulario según se muestra a continuación.
+El Usuario Tomador de Caso tiene la capacidad de crear consultas a través de la página de consultoría. Para hacerlo, se selecciona el botón con el símbolo ``+'' ubicado en el panel de entrada, y luego se completa el formulario como se muestra en la figura \ref{fig:formulario-crear-consulta}.
 
 \begin{figure}[H]
     \centering
@@ -482,7 +482,7 @@ El Usuario Tomador de Caso tiene la capacidad de crear consultas a través de la
 
 
 \section{Panel de Control}
-El panel de control consta de dos pestañas principales: ``Consultations'' y ``Clients''. Ambas pestañas ofrecen tablas que pueden descargarse en formato PDF o CSV. Además, proporcionan opciones de filtro y permiten la edición, creación o eliminación de registros.
+El panel de control (ver Figura \ref{fig:consultations-table}) consta de dos pestañas principales: ``Consultations'' y ``Clients''. Ambas pestañas ofrecen tablas que pueden descargarse en formato PDF o CSV. Además, proporcionan opciones de filtro y permiten la edición, creación o eliminación de registros.
 
 A continuación, se presenta la pestaña de ``Consultations'', que muestra una tabla con todas las consultas.
 
@@ -494,7 +494,7 @@ A continuación, se presenta la pestaña de ``Consultations'', que muestra una t
 \end{figure}
 
 
-A continuación, se presenta la pestaña de ``Clients'', que muestra una tabla con todos los consultantes.
+En la figura \ref{fig:clients-table}, se presenta la pestaña ``Clients'', que muestra una tabla con todos los consultantes.
 
 \begin{figure}[H]
     \centering
@@ -505,7 +505,7 @@ A continuación, se presenta la pestaña de ``Clients'', que muestra una tabla c
 
 Cada entrada en esta tabla puede ser eliminada o editada seleccionando los elementos en la última columna a la derecha de la entrada deseada. Además, es posible crear un nuevo registro haciendo clic en el botón ``Add Record'' en la parte superior.
 
-La tabla también permite aplicar filtros a algunas de sus columnas. Para ello, cada columna tiene un tooltip que facilita la ordenación ascendente o descendente, filtrado y ocultamiento de la columna. A continuación, se muestra un ejemplo de aplicación de un filtro a la columna ``progress state'' de la tabla ``consultations''.
+La tabla también permite aplicar filtros a algunas de sus columnas (ver Figura \ref{fig:tabla-filtro-ejemplo}). Para ello, cada columna tiene un tooltip que facilita la ordenación ascendente o descendente, filtrado y ocultamiento de la columna. A continuación, se muestra un ejemplo de aplicación de un filtro a la columna ``progress state'' de la tabla ``consultations''.
 
 \begin{figure}[H]
     \centering
@@ -517,7 +517,7 @@ La tabla también permite aplicar filtros a algunas de sus columnas. Para ello, 
 
 
 \section{Tablero de Trabajo para la Comisión}
-Cada comisión cuenta con un ``Board'', el cual los usuarios con acceso podrán visualizar desde la sección ``Boards'' en el menú desplegable de la página.
+Cada comisión cuenta con un ``Board'' (ver Figura \ref{fig:board-real-page}), el cual los usuarios con acceso podrán visualizar desde la sección ``Boards'' en el menú desplegable de la página.
 
 Este espacio está organizado en paneles, siendo el primero a la izquierda el panel de entrada de solicitudes de asignación de casos. Para aceptar una solicitud, basta con arrastrar el ticket de la consulta a alguno de los paneles internos del board. Para rechazarla, se puede seleccionar la opción ``rejected'' desde el menú del ticket, el cual se hace visible acercando el ratón sobre él.
 
@@ -532,6 +532,9 @@ Los paneles a la izquierda son flexibles y pueden ser creados según la necesida
 
 Cada panel se puede crear utilizando el botón ``+'' e ingresando el nombre correspondiente. Asimismo, se pueden eliminar a través del menú del panel o editar el título haciendo doble clic sobre él (siempre y cuando no existan tickets en el tablero). Además, el board puede ser renombrado haciendo doble clic sobre el título.
 
+La Figura \ref{fig:delete-panel} muestra los botones para eliminar o crear un panel del board.
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{fig/delete-panel.png}
@@ -545,7 +548,7 @@ Cada panel se puede crear utilizando el botón ``+'' e ingresando el nombre corr
 
 \section{Detalles de la Consulta}\label{sec:info-consulta}
 
-Para obtener más detalles sobre una consulta específica, se debe hacer click en la tarjeta correspondiente, lo que desplegará un cuadro con tres pestañas distintas.
+Para obtener más detalles sobre una consulta específica, se debe hacer click en la tarjeta correspondiente, lo que desplegará un cuadro con tres pestañas distintas, como se ve en la figura \ref{fig:consulta-info}.
 
 \begin{figure}[H]
     \centering
@@ -554,7 +557,7 @@ Para obtener más detalles sobre una consulta específica, se debe hacer click e
     \label{fig:consulta-info}
 \end{figure}
 
-La primera pestaña presenta información organizada sobre el consultante y los detalles de la consulta.
+En la figura \ref{fig:consulta-comentarios}, muestra la primera pestaña, la cual presenta información organizada sobre el consultante y los detalles de la consulta.
 
 \begin{figure}[H]
     \centering
@@ -563,7 +566,7 @@ La primera pestaña presenta información organizada sobre el consultante y los 
     \label{fig:consulta-comentarios}
 \end{figure}
 
-La segunda pestaña es una sección dedicada para registrar comentarios y archivos relevantes que contribuyan al seguimiento del caso.
+En la figura \ref{fig:consulta-calendar-1}, muestra la segunda pestaña. Esta es una sección dedicada para registrar comentarios y archivos relevantes que contribuyan al seguimiento del caso.
 
 \begin{figure}[H]
     \centering
@@ -572,7 +575,7 @@ La segunda pestaña es una sección dedicada para registrar comentarios y archiv
     \label{fig:consulta-calendar-1}
 \end{figure}
 
-La tercera ventana es un calendario que permite registrar eventos relacionados con el caso, como reuniones o fechas importantes.
+En las figuras \ref{fig:consulta-calendar-2} y \ref{fig:consulta-calendar-3}, se observa la tercera ventana, que es un calendario que permite registrar eventos relacionados con el caso, como reuniones o fechas importantes.
 
 \begin{figure}[H]
     \centering
@@ -593,7 +596,7 @@ Este calendario ofrece varias vistas, como mensual, semanal, diaria o en formato
 
 \section{Configuración de Cuenta}\label{sec:configuracion-cuenta}
 
-La sección de configuración de cuenta, accesible desde la página de ``Settings'', proporciona la capacidad de visualizar y editar información personalizada, como el nombre de usuario y la contraseña.
+La sección de configuración de cuenta (ver Figura \ref{fig:settings-page}), accesible desde la página de ``Settings'', proporciona la capacidad de visualizar y editar información personalizada, como el nombre de usuario y la contraseña.
 
 \begin{figure}[H]
     \centering
