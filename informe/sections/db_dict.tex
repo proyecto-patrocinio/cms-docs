@@ -1,0 +1,305 @@
+\chapter{Diccionario de Base de Datos}\label{cap:dict-db}
+
+
+\section{Tabla Board}\label{sec:table-board}
+Un \texttt{board} representa el espacio de trabajo de una comisión en forma de tablero. Este tablero contiene paneles para agrupar tarjetas de consultas y organizar los casos y las solicitudes para el ingreso de nuevos casos a la comisión.
+
+\begin{table}[htbp]
+\centering
+\label{tab:board}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+title & varchar(45) & Titulo o nombre de la comisión. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Board}
+\end{table}
+
+
+
+\section{Tabla Board-User}\label{sec:table-board-user}
+La tabla \texttt{Board-User} Registra la asociación entre usuarios y tableros, lo que permite gestionar los permisos y el acceso de cada usuario a los recursos del tablero correspondiente. Se utiliza para asignar usuarios a sus respectivas comisiones.
+
+
+\begin{table}[htbp]
+\centering
+\label{tab:board-user}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+created\_at & timestamptz & Fecha de asignación. &  & V \\ \hline
+board\_id & int4 & PK del tablero. &  & V \\ \hline
+user\_id & int4 & PK del usuario. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Board-User}
+\end{table}
+
+
+
+\section{Tabla Calendar}\label{sec:table-calendar}
+La tabla \texttt{Calendar} representa el calendario asociado a un ticket de consulta. Se creó una tabla aparte para permitir escalabilidad y la posibilidad de agregar campos adicionales en el futuro, como la fecha de última modificación o la capacidad de crear múltiples calendarios para grupos de trabajo en una consulta.
+
+\begin{table}[htbp]
+\centering
+\label{tab:calendar}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+card\_id & int4 & PK de la tarjeta o ticket de consulta. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Calendar}
+\end{table}
+
+
+
+\section{Tabla Event}\label{sec:table-calendar}
+La tabla \texttt{Event} representa el evento en un calendario.
+
+\begin{table}[htbp]
+\centering
+\label{tab:event}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+title & varchar(45) & Título del evento. &  & V \\ \hline
+description & text & Descripción del evento. &  & F \\ \hline
+start & timestamptz & Fecha de inicio. &  & V \\ \hline
+end & timestamptz & Fecha de cierre. &  & V \\ \hline
+calendar\_id & int4 & PK del calendario. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Event}
+\end{table}
+
+
+\section{Tabla Card}\label{sec:table-calendar}
+Una \texttt{Card} se utiliza para ubicar una consulta dentro de un tablero de organización representada por una tarjeta la cual será colocada dentro de un panel.
+
+\begin{table}[htbp]
+\centering
+\label{tab:card}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+consultation\_id & int4 & Clave primaria y PK de la consulta asociada. &  & V \\ \hline
+tag & varchar(256) & Etiqueta o título del ticket. &  & V \\ \hline
+panel\_id & int4 & PK del panel donde se encuentra ubicado el ticket.. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Card}
+\end{table}
+
+
+
+\section{Tabla Child}\label{sec:table-child}
+La tabla \texttt{Child} almacena los datos de un hijo de un cliente.
+
+\begin{table}[htbp]
+\centering
+\label{tab:child}
+
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+first\_name & varchar(150) & Nombre. &  & V \\ \hline
+last\_name & varchar(150) & Apellido. &  & V \\ \hline
+id\_type & varchar(10) & Tipo de documento. & Valores posibles: DOCUMENT y PASSPORT. & V \\ \hline
+id\_value & varchar(20) & Valor del documento (Pasaporte o Número de documento). & & V \\ \hline
+sex & varchar(6) & Sexo. & Valores posibles: MALE y FEMALE. & V \\ \hline
+birth\_date & date & Fecha de nacimiento. & & V \\ \hline
+address & text & Dirección donde vive. & & V \\ \hline
+locality\_id & int4 & PK de localidad donde vive. & & V \\ \hline
+family\_client- \_user\_id & int4 & PK de la familia asociada. & & V \\ \hline
+\end{tabular}
+\caption{Tabla Child}
+\end{table}
+
+
+
+
+\section{Tabla Client}\label{sec:table-client}
+Un cliente en el contexto de este sistema es un consultante que solicita patrocinio gratuito en el Patrocinio Jurídico para un caso particular.
+
+\begin{table}[H]
+\centering
+\label{tab:client}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+first\_name & varchar(150) & Nombre. &  & V \\ \hline
+last\_name & varchar(150) & Apellido. &  & V \\ \hline
+id\_type & varchar(10) & Tipo de documento. & Valores posibles: DOCUMENT y PASSPORT. & V \\ \hline
+id\_value & varchar(20) & Valor del documento (Pasaporte o Número de documento). & & V \\ \hline
+sex & varchar(6) & Sexo. & Valores posibles: MALE y FEMALE. & V \\ \hline
+birth\_date & date & Fecha de nacimiento. & & V \\ \hline
+address & text & Dirección donde vive. & & V \\ \hline
+postal & int4 & Código postal. & & V \\ \hline
+locality\_id & int4 & PK de localidad donde vive. & & V \\ \hline
+marital\_status & varchar(10) & Estado civil. & Valores posibles: SINGLE, MARRIED, DIVORCED y WIDOWER. & V \\ \hline
+housing\_type & varchar(20) & Tipo de vivienda. & Valores posibles: HOUSE, DEPARTMENT, TRAILER, STREET\_SITUATION. & V \\ \hline
+studies & varchar(30) & Estudios alcanzados. & & V \\ \hline
+email & varchar(254) & Correo electrónico. & & V \\ \hline
+\end{tabular}
+\caption{Tabla client}
+\end{table}
+
+
+\section{Tabla Family}\label{sec:table-family}
+La tabla \texttt{Family} representa la información relacionada con la familia de un cliente.
+
+\begin{table}[H]
+\centering
+\label{tab:family}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria y PK del cliente. & & V \\ \hline
+partner\_salary & int4 & Salario de la pareja del cliente. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Family}
+\end{table}
+
+
+
+\section{Tabla Patrimony}\label{sec:table-patrimony}
+La tabla \texttt{Patrimony} almacena información relacionada con el patrimonio de un cliente.
+
+\begin{table}[H]
+\centering
+\label{tab:patrimony}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria y PK del cliente. & & V \\ \hline
+employment & varchar(45) & Tabajo del cliente. &  & V \\ \hline
+salary & int4 & Salario del cliente. &  & V \\ \hline
+amount\_retirement & int4 & Monto de ingreso por jubilación. &  & V \\ \hline
+amount\_pension & int4 & Monto de ingreso por pensión. &  & V \\ \hline
+other\_income & int4 & varchar(45) &  & V \\ \hline
+amount\_other\_income & int4 & Monto de otros ingresos del cliente. &  & V \\ \hline
+vehicle & varchar(300) & Vehiculo del cliente. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Patrimony}
+\end{table}
+
+
+\section{Tabla Tel}\label{sec:table-tel}
+La tabla \texttt{Tel} almacena los números de teléfono de un cliente.
+
+\begin{table}[H]
+\centering
+\label{tab:family}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+phone\_number & int4 & Número de teléfono. &  & V \\ \hline
+id\_client & int4 & PK del cliente. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Family}
+\end{table}
+
+
+
+\section{Tabla Comment}\label{sec:table-comment}
+La tabla \texttt{Comment} almacena los comentarios relacionados con las consultas realizadas. Se utiliza para realizar seguimientos de los casos (consultas). Estos son realizados por los profesores encargados de llevar a cabo dicho caso o consulta.
+
+\begin{table}[H]
+\centering
+\label{tab:comment}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+time\_stamp & timestamptz & Momento en que se creó el comentario. &  & V \\ \hline
+text & text & Texto del comentario. &  & V \\ \hline
+consultation\_id & int4 & PK de la consulta. &  & V \\ \hline
+user\_id & int4 & PK del usuario que realizó la consulta. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Comment}
+\end{table}
+
+
+\section{Tabla File}\label{sec:table-file}
+La tabla \texttt{File} almacena la información de los archivos adjuntos en los comentarios de una consulta o caso.
+
+\begin{table}[H]
+\centering
+\label{tab:file}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+time\_stamp & timestamptz & Momento en que se subió el archivo. &  & V \\ \hline
+filename & varchar(255) & Nombre del archivo adjunto. &  & V \\ \hline
+comment\_id & int4 & PK del comentario al que se adjuntó el archivo. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla File}
+\end{table}
+
+
+\section{Tabla Consultation}\label{sec:table-consultation}
+Una consulta es realizada por un cliente que solicita que un caso sea patrocinado por el sistema de patrocinio.
+
+\begin{table}[H]
+\centering
+\label{tab:consultation}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+tag & varchar(30) & Título o código de identificación de la consulta. & & V \\ \hline
+client\_id & int4 & PK del cliente que realizó la consulta. & & V \\ \hline
+availability\_state & varchar(12) & Estado de disponibilidad. & Valores posibles: CREATED, PENDING, ASSIGNED, REJECTED y ARCHIVED. & V \\ \hline
+progress\_state & varchar(12)  & Estado de progreso. & Valores posibles: TODO, IN\_PROGRESS, DONE, PAUSED, BLOCKED, INCOMPLETE. & V \\ \hline
+time\_stamp & timestamptz & Fecha de creación de la consulta. &  & V \\ \hline
+start\_stamp & timestamptz & Fecha en que se comenzó a procesar el caso. &  & F \\ \hline
+description & text & Descripción detallada de la consulta realizada por el cliente. &  & V \\ \hline
+opponent & varchar(500) & Oponente de la consulta. &  Parte contraria a quien presenta la demanda, puede ser una persona física, una empresa, una organización, una entidad gubernamental, etc. & V \\ \hline
+
+\end{tabular}
+\caption{Tabla Consultation}
+\end{table}
+
+
+
+\section{Tabla Request Consultation}\label{sec:table-req-consultation}
+La tabla \texttt{Request Consultation} se utiliza para registrar solicitudes de consulta dirigidas a una comisión, con el fin de que esta se haga cargo del caso o consulta correspondiente.
+
+\begin{table}[H]
+\centering
+\label{tab:req-consult}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+consultation\_id & int4 & Clave Primaria y PK de la consulta asociada. & & V \\ \hline
+destiny\_board\_id & int4 &  PK del tablero de la comisión destino a la que se envía la solicitud. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Request Consultation}
+\end{table}
+
+
+\section{Tabla Panel}\label{sec:table-panel}
+Un panel es un espacio dentro de un tablero donde se agrupan diferentes tarjetas o tickets de consultas. Cada tablero puede tener más de un panel, y estos sirven para organizar las consultas por profesor, grupo, estado u otros criterios.
+
+\begin{table}[H]
+\centering
+\label{tab:panel}
+\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
+\hline
+\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
+id & int4 & Clave Primaria. & Incremental automático. & V \\ \hline
+title & varchar(255) &  Título del panel. &  & V \\ \hline
+board\_id & int4 & PK del tablero al que pertenece el panel. &  & V \\ \hline
+\end{tabular}
+\caption{Tabla Panel}
+\end{table}
