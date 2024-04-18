@@ -285,7 +285,7 @@ Una vez que la plataforma esté en funcionamiento, el administrador debe acceder
 \end{figure}
 
 
-A continuación, el administrador debe crear todas las pizarras de trabajo para cada comisión existente en el patrocinio a través de la sección de \textit{Boards} (ver Figura \ref{fig:boards-admin}).
+A continuación, el administrador debe crear todas los tableros de trabajo para cada comisión existente en el patrocinio a través de la sección de \textit{Boards} (ver Figura \ref{fig:boards-admin}).
 
 \begin{figure}[H]
     \centering
@@ -303,8 +303,8 @@ Finalmente, se deberá registrar una cuenta de usuario para la integración con 
 Para poder registrar un usuario, El usuario deberá seguir los siguientes pasos:
 
 \begin{enumerate}
-    \item Ingresar a la página web y seleccionar la opción ``Don't have an account? Sign Up''.
-    \item Completar los datos requeridos, acepte los términos y condiciones, y haga clic en el botón ``Sign up'', como se muestra en la Figura \ref{fig:signup}.
+    \item Ingresar a la página web y seleccionar la opción ``¿No tienes una cuenta? Regístrate'.
+    \item Completar los datos requeridos, acepte los términos y condiciones, y haga clic en el botón ``Registrarse'', como se muestra en la Figura \ref{fig:signup}.
 
 
     \begin{figure}[H]
@@ -339,14 +339,14 @@ La página lo redirigirá a la principal, pero aún el usuario no podrá acceder
         \label{fig:user-permission}
     \end{figure}
     
-    \item En la sección, marcar la opción ``Active'' y otorgar los permisos necesarios (ver \ref{sec:permisos-usuarios}) antes de guardar.
+    \item En la sección, marcar la opción ``Activo'' y otorgar los permisos necesarios (ver \ref{sec:permisos-usuarios}) antes de guardar.
 
 \end{enumerate}
 
 Si el usuario es un miembro de una comisión, el administrador también deberá realizar los siguientes pasos adicionales.
 
 \begin{enumerate}
-    \item Ingresar a la sección ``Board Users''.
+    \item Ingresar a la sección ``Tableros - Usuarios''.
     \item Crear la relación del usuario con la comisión correspondiente, como se observa en la figura \ref{fig:board-user-2}.
 
     \begin{figure}[H]
@@ -377,7 +377,7 @@ Después de completar estos pasos, el usuario podrá iniciar sesión correctamen
 
 \section{Permisos de Usuario}\label{sec:permisos-usuarios}
 
-Los grupos de permisos de usuarios se encuentran en la sección "Groups" de la página de administración y se detallan a continuación:
+Los grupos de permisos de usuarios se encuentran en la sección "Groupos" de la página de administración y se detallan a continuación:
 
 \begin{table}[H]
     \centering
@@ -410,7 +410,7 @@ Los grupos de permisos de usuarios se encuentran en la sección "Groups" de la p
         \hline
         common & Grupo de permisos básicos necesarios tanto para un tomador de caso como para un profesor.\\
         \hline
-        case_taker & Grupo de permisos para un tomador de caso. Necesarios para el manejo de la consultoría.\\
+        case\_taker & Grupo de permisos para un tomador de caso. Necesarios para el manejo de la consultoría.\\
         \hline
         professor & Grupo de permisos para un profesor. Necesarios para el manejo de una comisión.\\
         \hline
@@ -442,7 +442,7 @@ En esta interfaz, los administradores pueden realizar diversas acciones, como ag
 \section{Tablero de Trabajo de Consultoría}
 La página de consultoría (ver Figura \ref{fig:consultancy-real-page}) es responsable de la administración de las consultas. Aquí, los tomadores de casos pueden revisar las consultas entrantes, representadas como tickets generados a través de formularios de Google. Pueden analizarlas y verificar si cumplen con las condiciones para ser patrocinadas por la entidad. Los tomadores de casos tienen la capacidad de crear, editar y eliminar consultas o enviarlas a una comisión para solicitar patrocinio.
 
-La página está estructurada mediante paneles. El panel izquierdo contiene las consultas sin asignar, mientras que los paneles siguientes representan comisiones, cada uno con los tickets de las solicitudes de asignación. Para asignar una consulta a una comisión, basta con arrastrar la consulta al tablero de la comisión deseada. También es posible eliminar la solicitud volviendo a arrastrar el ticket al panel izquierdo. Para eliminar el ticket, simplemente posicione el mouse sobre el mismo, seleccione el menú que aparecerá y elija la opción "delete".
+La página está estructurada mediante paneles. El panel izquierdo contiene las consultas sin asignar, mientras que los paneles siguientes representan comisiones, cada uno con los tickets de las solicitudes de asignación. Para asignar una consulta a una comisión, basta con arrastrar la consulta al tablero de la comisión deseada. También es posible eliminar la solicitud volviendo a arrastrar el ticket al panel izquierdo. Para eliminar el ticket, simplemente posicione el mouse sobre el mismo, seleccione el menú que aparecerá y elija la opción ``eliminar``.
 
 \begin{figure}[H]
     \centering
@@ -451,7 +451,7 @@ La página está estructurada mediante paneles. El panel izquierdo contiene las 
     \label{fig:consultancy-real-page}
 \end{figure}
 
-Es importante mantener un registro del estado de cada comisión. Cada panel cuenta con un popper en el sector superior derecho que, al hacer clic, muestra la cantidad de consultas asignadas y la cantidad de consultas por estado (por hacer, en progreso o pausadas/bloqueadas). Además, como se ve en la figura \ref{fig:consultancy-logs-1}, incluye un historial de las asignaciones de los últimos 10 días, que muestra el ``tag'' de la consulta y la fecha de asignación.
+Es importante mantener un registro del estado de cada comisión. Cada panel cuenta con un popper en el sector superior derecho que, al hacer clic, muestra la cantidad de consultas asignadas y la cantidad de consultas por estado (por hacer, en progreso o pausadas/bloqueadas). Además, como se ve en la figura \ref{fig:consultancy-logs-1}, incluye un historial de las asignaciones de los últimos 10 días, que muestra la ``etiqueta'' de la consulta y la fecha de asignación.
 
 \begin{figure}[H]
     \centering
@@ -460,7 +460,7 @@ Es importante mantener un registro del estado de cada comisión. Cada panel cuen
     \label{fig:consultancy-logs-1}
 \end{figure}
 
-Cuando la cantidad de consultas asignadas a la comisión en los últimos 10 días es extensa, aparecerá la opción ``show more'', que expandirá un panel con todas las asignaciones (ver Figura \ref{fig:consultancy-logs-2}).
+Cuando la cantidad de consultas asignadas a la comisión en los últimos 10 días es extensa, aparecerá la opción ``ver mas'', que expandirá un panel con todas las asignaciones (ver Figura \ref{fig:consultancy-logs-2}).
 
 \begin{figure}[H]
     \centering
@@ -482,7 +482,7 @@ El Usuario Tomador de Caso tiene la capacidad de crear consultas a través de la
 
 
 \section{Panel de Control}
-El panel de control (ver Figura \ref{fig:consultations-table}) consta de dos pestañas principales: ``Consultations'' y ``Clients''. Ambas pestañas ofrecen tablas que pueden descargarse en formato PDF o CSV. Además, proporcionan opciones de filtro y permiten la edición, creación o eliminación de registros.
+El panel de control (ver Figura \ref{fig:consultations-table}) consta de dos pestañas principales: ``Consultas'' y ``Consultantes''. Ambas pestañas ofrecen tablas que pueden descargarse en formato PDF o CSV. Además, proporcionan opciones de filtro y permiten la edición, creación o eliminación de registros.
 
 A continuación, se presenta la pestaña de ``Consultations'', que muestra una tabla con todas las consultas.
 
@@ -494,7 +494,7 @@ A continuación, se presenta la pestaña de ``Consultations'', que muestra una t
 \end{figure}
 
 
-En la figura \ref{fig:clients-table}, se presenta la pestaña ``Clients'', que muestra una tabla con todos los consultantes.
+En la figura \ref{fig:clients-table}, se presenta la pestaña ``Consultantes'', que muestra una tabla con todos los consultantes.
 
 \begin{figure}[H]
     \centering
@@ -503,9 +503,9 @@ En la figura \ref{fig:clients-table}, se presenta la pestaña ``Clients'', que m
     \label{fig:clients-table}
 \end{figure}
 
-Cada entrada en esta tabla puede ser eliminada o editada seleccionando los elementos en la última columna a la derecha de la entrada deseada. Además, es posible crear un nuevo registro haciendo clic en el botón ``Add Record'' en la parte superior.
+Cada entrada en esta tabla puede ser eliminada o editada seleccionando los elementos en la última columna a la derecha de la entrada deseada. Además, es posible crear un nuevo registro haciendo clic en el botón ``Agregar Registro'' en la parte superior.
 
-La tabla también permite aplicar filtros a algunas de sus columnas (ver Figura \ref{fig:tabla-filtro-ejemplo}). Para ello, cada columna tiene un tooltip que facilita la ordenación ascendente o descendente, filtrado y ocultamiento de la columna. A continuación, se muestra un ejemplo de aplicación de un filtro a la columna ``progress state'' de la tabla ``consultations''.
+La tabla también permite aplicar filtros a algunas de sus columnas (ver Figura \ref{fig:tabla-filtro-ejemplo}). Para ello, cada columna tiene un tooltip que facilita la ordenación ascendente o descendente, filtrado y ocultamiento de la columna. A continuación, se muestra un ejemplo de aplicación de un filtro a la columna ``estado de progreso'' de la tabla ``consultas''.
 
 \begin{figure}[H]
     \centering
@@ -517,9 +517,9 @@ La tabla también permite aplicar filtros a algunas de sus columnas (ver Figura 
 
 
 \section{Tablero de Trabajo para la Comisión}
-Cada comisión cuenta con un ``Board'' (ver Figura \ref{fig:board-real-page}), el cual los usuarios con acceso podrán visualizar desde la sección ``Boards'' en el menú desplegable de la página.
+Cada comisión cuenta con un ``Tablero'' (ver Figura \ref{fig:board-real-page}), el cual los usuarios con acceso podrán visualizar desde la sección ``Tableros'' en el menú desplegable de la página.
 
-Este espacio está organizado en paneles, siendo el primero a la izquierda el panel de entrada de solicitudes de asignación de casos. Para aceptar una solicitud, basta con arrastrar el ticket de la consulta a alguno de los paneles internos del board. Para rechazarla, se puede seleccionar la opción ``rejected'' desde el menú del ticket, el cual se hace visible acercando el ratón sobre él.
+Este espacio está organizado en paneles, siendo el primero a la izquierda el panel de entrada de solicitudes de asignación de casos. Para aceptar una solicitud, basta con arrastrar el ticket de la consulta a alguno de los paneles internos del board. Para rechazarla, se puede seleccionar la opción ``rechazado'' desde el menú del ticket, el cual se hace visible acercando el ratón sobre él.
 
 Los paneles a la izquierda son flexibles y pueden ser creados según la necesidad del usuario, ya sea como organizadores, separadores de consultas, o para cualquier otro agrupamiento conveniente. Por ejemplo, podrían ser utilizados un panel por profesor, otro por estado de progreso de las consultas, o cualquier otro criterio de agrupación preferido.
 

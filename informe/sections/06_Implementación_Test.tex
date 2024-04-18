@@ -330,7 +330,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{And} Existe un usuario registrado sin activar.Existe un superusuario administrador
         \item \textbf{And} Se accedió a la plataforma como usuario ``administrador''.
         \item \textbf{And} Se ingresó a la página de administración.
-        \item \textbf{And} Se navegó a la pestaña ``Users''.
+        \item \textbf{And} Se navegó a la pestaña ``Usuarios''.
         \newline
         \item \textbf{When} Se edita el estado del usuario ``nuevo'' a ``Activo''.
         \item \textbf{And} Se desloguea de la página de administración.
@@ -345,9 +345,9 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \newline
         \item \textbf{When} Se accede a la plataforma como el usuario ``Tomador de Caso''.
         \newline
-        \item \textbf{Then} La pestaña ``Consultancy'' debería estar visible.
-        \item \textbf{And} Las pestañas ``Consultations'' y ``Clients'' del ``Panel de Control'' deberían estar visibles.
-        \item \textbf{And} La pestaña ``Boards'' no debería estar visible.
+        \item \textbf{Then} La pestaña ``Consultoría'' debería estar visible.
+        \item \textbf{And} Las pestañas ``Consultas'' y ``Consultantes'' del ``Panel de Control'' deberían estar visibles.
+        \item \textbf{And} La pestaña ``Tableros'' no debería estar visible.
     \end{itemize}
     \\
     \hline
@@ -357,9 +357,9 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \newline
         \item \textbf{When} Se accede a la plataforma como el usuario ``Profesor''.
         \newline
-        \item \textbf{Then} La pestaña ``Boards'' debería estar visible.
-        \item \textbf{And} La pestaña ``Consultancy'' no debería estar visible.
-        \item \textbf{And} Las pestañas ``Consultations'' y ``Clients'' del ``Panel de Control'' no deberían estar visibles.
+        \item \textbf{Then} La pestaña ``Tableros'' debería estar visible.
+        \item \textbf{And} La pestaña ``Consultoría'' no debería estar visible.
+        \item \textbf{And} Las pestañas ``Consultas'' y ``Consultantes'' del ``Panel de Control'' no deberían estar visibles.
     \end{itemize}   
     \\
     \hline
@@ -368,17 +368,17 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
         \item \textbf{And} Existe un consultante con DNI ``11111111'' en la base de datos.
         \item \textbf{And} Ese accedió a la plataforma como usuario ``Tomador de Caso''.
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultoría''.
         \newline
         \item \textbf{When} Se crea la consulta ``Garantía'' con Cliente ``11111111'', oponente ``Samsung'' y descripcion ``Dummy''.
         \newline
         \item \textbf{Then} La consulta ``Garant\'ia'' para el consultante con DNI ``11111111'' deberı\'ia existir en base de datos.
-        \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``CONSULTANCY''.
+        \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada del tablero ``Consultoría''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el consultante con DNI ``11111111''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Progress State'' en ``TODO''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deber\'ia contener el campo ``Availability State'' en ``CREATED''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Descripción'' en ``Dummy''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Estado de progreso'' en ``Por hacer''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Oponente'' en ``Samsung''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deber\'ia contener el campo ``Estado de disponibilidad'' en ``Creado, sin asignar''.
     \end{itemize}
     \\
     \hline
@@ -403,11 +403,11 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \newline
         \item \textbf{When} Se navega a la pestaña ``Board/Comisión A1''
         \newline
-        \item \textbf{Then} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
+        \item \textbf{Then} El ticket ``Garant\'ia'' deber\'ia estar visible en el panel de entrada del tablero ``Comisión A1''.
         \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el consultante con DNI ``11111111''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Description'' en ``Dummy''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Opponent'' en ``Samsung''.
-        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Descripción'' en ``Dummy''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Oponente'' en ``Samsung''.
+        \item \textbf{And} La información de la consulta ``Garant\'ia'' deberı\'ia contener el campo ``Estado de disponibilidad'' en ``Asignado''.
     \end{itemize}
     \\ 
     \hline
@@ -447,12 +447,12 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Dummy
         ...    TODO
             \end{verbatim}
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultoría''.
         \item \textbf{When} Se selecciona el botón de información del panel ``Comisión A1''.
-        \item \textbf{Then} El Popper de la comisión debería contener ``3 total cards''.
-        \item \textbf{And} El Popper de la comisión debería contener ``2 cards to do''.
-        \item \textbf{And} El Popper de la comisión debería contener ``1 cards in progress''.
-        \item \textbf{And} El Popper de la comisión debería contener ``0 cards stopped''.
+        \item \textbf{Then} El Popper de la comisión debería contener ``3 consultas totales''.
+        \item \textbf{And} El Popper de la comisión debería contener ``2 consultas por hacer''.
+        \item \textbf{And} El Popper de la comisión debería contener ``1 consultas en progreso''.
+        \item \textbf{And} El Popper de la comisión debería contener ``0 consultas detenidas''.
     \end{itemize}
     \\
     \hline
@@ -471,17 +471,17 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Dummy
         ...    CREATED
         \end{verbatim}
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultoría''.
         \newline
         \item \textbf{When} Se crea la solicitud de asignación de consulta ``Garant\'ia'' a la comisión ``Comisión A1''.
         \newline
-        \item \textbf{Then} Debería existir una ``request consultation'' de la consulta ``Garant\'ia'' al board ``Comisión A1'' en la DB.
+        \item \textbf{Then} Debería existir una ``solicitud de consulta'' de la consulta ``Garant\'ia'' al board ``Comisión A1'' en la DB.
         \item \textbf{And} El ticket ``Garant\'ia'' deber\'ia estar en el primer panel ``Comisión A1'' de la comisión.
         \newline
         \item \textbf{When} Se elimina la solicitud de asignación de consulta ``Garant\'ia''.
         \newline
-        \item \textbf{Then} debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia'' de la DB.
-        \item \textbf{And} el ticket ``Garant\'ia'' debería estar en el panel de entrada ``Available Consultations'' de la comisión.
+        \item \textbf{Then} debería haberse eliminado la ``solicitud de consulta'' de la consulta ``Garant\'ia'' de la DB.
+        \item \textbf{And} el ticket ``Garant\'ia'' debería estar en el panel de entrada ``Consultas disponibles'' de la comisión.
     \end{itemize}
     \\
     \hline
@@ -519,7 +519,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{Then} El archivo se debería haber descargado correctamente.
         \item \textbf{And} El archivo de consultas descargado debería ser el esperado 'expected\_consultations.csv'
     
-        \item \textbf{When} Se crea el filtro ``Tag'' con ``Garantía2''.
+        \item \textbf{When} Se crea el filtro ``Etiqueta'' con ``Garantía2''.
     
         \item \textbf{Then} La tabla debería contener 1 filas.
         \item \textbf{And} la tabla debería contener la consulta:
@@ -557,7 +557,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
 ...    HOUSE    COMPLETE_UNIVERSITY   john80@gmail.com
         \end{verbatim}
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
-        \item \textbf{When} Se navegó a la pestaña ``Control Panel - Clients''.
+        \item \textbf{When} Se navegó a la pestaña ``Panel de Control - Clientes''.
         \item \textbf{Then} La tabla debería contener 2 filas.
         \item \textbf{And} La tabla debería contener el consultante:
         \begin{verbatim}
@@ -575,7 +575,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{When} Se descarga el csv de la tabla.
         \item \textbf{Then} El archivo se debería haber descargado correctamente.
         \item \textbf{And} El archivo de consultantes descargado debería ser el esperado 'expected\_clients.csv'.
-        \item \textbf{When} Se crea el filtro ``First Name'' con ``Emily''.
+        \item \textbf{When} Se crea el filtro ``Nombre'' con ``Emily''.
         \item \textbf{Then} La tabla debería contener 1 filas.
         \item \textbf{And} La tabla debería contener el consultante:
         \begin{verbatim}
@@ -622,14 +622,14 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{When} Se acepta la solicitud de asignación de consulta ``Garant\'ia1'' y se asigna al panel ``Panel A1''.
         \newline
         
-        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia1'' de la DB.
+        \item \textbf{Then} Debería haberse eliminado la ``solicitud de consulta'' de la consulta ``Garant\'ia1'' de la DB.
         \item \textbf{And} El ticket ``Garant\'ia1'' debería estar en el primer panel ``Panel A1'' del board.
         \newline
         
         \item \textbf{When} Se selecciona la opción rejected del menu del ticket ``Garant\'ia2''.
         \newline
 
-        \item \textbf{Then} Debería haberse eliminado la ``request consultation'' de la consulta ``Garant\'ia2'' de la DB.
+        \item \textbf{Then} Debería haberse eliminado la ``solicitud de consulta'' de la consulta ``Garant\'ia2'' de la DB.
         \item \textbf{And} No debería existir el ticket ``Garant\'ia2'' en el board.
         \newline
     \end{itemize}
@@ -701,19 +701,19 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{And} se navega a la pestaña ``Board/Comisión A1''.
         \newline
     
-        \item \textbf{When} Se edita el campo ``Description'' a ``otra descripcion'' del ticket ``Divorcio''.
-        \item \textbf{And} Se edita el campo ``Opponent'' a ``otro oponente'' del ticket ``Divorcio''.
-        \item \textbf{And} Se edita el campo ``Progress State'' seleccionando la opción ``IN\_PROGRESS'' del ticket ``Divorcio''.
-        \item \textbf{And} Se edita el campo ``Tag'' a ``CODE-123: Divorcio'' del ticket ``Divorcio''.
+        \item \textbf{When} Se edita el campo ``Descripción'' a ``otra descripcion'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Oponente'' a ``otro oponente'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Estado de progreso'' seleccionando la opción ``IN\_PROGRESS'' del ticket ``Divorcio''.
+        \item \textbf{And} Se edita el campo ``Etiqueta'' a ``CODE-123: Divorcio'' del ticket ``Divorcio''.
         \newline
     
         \item \textbf{Then} No debería existir el ticket ``Divorcio'' en el board.
-        \item \textbf{And} El ticket ``CODE-123: Divorcio'' deber\'ia estar visible en el panel de entrada de la pizarra ``Comisión A1''.
-        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Tag'' en ``CODE-123: Divorcio''.
+        \item \textbf{And} El ticket ``CODE-123: Divorcio'' deber\'ia estar visible en el panel de entrada del tablero ``Comisión A1''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Etiqueta'' en ``CODE-123: Divorcio''.
         \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el consultante con DNI ``11111111''.
-        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Description'' en ``otra descripcion''.
-        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Opponent'' en ``otro oponente''.
-        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Availability State'' en ``ASSIGNED''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Descripción'' en ``otra descripcion''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Oponente'' en ``otro oponente''.
+        \item \textbf{And} La información de la consulta ``CODE-123: Divorcio'' deber\'ia contener el campo ``Estado de disponibilidad'' en ``Asignado''.
     \end{itemize}
     \\ 
     \hline
@@ -758,7 +758,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
     \begin{itemize}
         \item \textbf{Given} Existe un usuario registrado activo con permisos ``common'' y ``case\_taker'' en la DB.
         \item \textbf{And} Se accedió a la plataforma como usuario ``Tomador de Caso''.
-        \item \textbf{And} Se navegó a la pestaña ``Control Panel - Clients''.
+        \item \textbf{And} Se navegó a la pestaña ``Panel de Control - Clientes''.
         \newline
         \item \textbf{When}  Se crea un nuevo consultante ``Dummy Client'' con DNI ``11111111''.
         \newline
@@ -787,7 +787,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    Dummy
         ...    CREATED
         \end{verbatim}
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultoría''.
         \newline
         \item \textbf{When} Se abre el detalle del ticket ``Garantía''.
         \newline
@@ -811,7 +811,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         ...    CREATED
         \end{verbatim}
         \item \textbf{And} Existe una solicitud de asignación de la consulta ``Garantía'' a la comision ``Comision A1''.
-        \item \textbf{And} Se navegó a la pestaña ``Consultancy''.
+        \item \textbf{And} Se navegó a la pestaña ``Consultoría''.
         \newline
         \item \textbf{When} Se abre el detalle del ticket ``Garantía''.
         \newline
