@@ -622,7 +622,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \item \textbf{When} Se acepta la solicitud de asignación de consulta ``Garant\'ia1'' y se asigna al panel ``Panel A1''.
         \newline
         
-        \item \textbf{Then} Debería haberse eliminado la ``solicitud de consulta'' de la consulta ``Garant\'ia1'' de la DB.
+        \item \textbf{Then} Deber\'ia haberse cambiado la ``solicitud'' de la consulta ``Garant\'ia1'' a ``ACCEPTED'' en la DB.
         \item \textbf{And} El ticket ``Garant\'ia1'' debería estar en el primer panel ``Panel A1'' del board.
         \newline
         
@@ -764,7 +764,7 @@ En cuanto a las pruebas automáticas, se implementan utilizando el framework de 
         \newline
         \item \textbf{Then} El consultante con DNI ``11111111'' deber\'ia existir en DB.
         \newline
-        \item \textbf{When} Se edita el campo ``family.partner\_salary'' a ``123'' del consultante con DNI ``11111111''.
+        \item \textbf{When} Se edita el campo ``partner\_salary'' a ``123'' del consultante con DNI ``11111111''.
         \newline
         \item \textbf{Then} El campo ``partner\_salary'' del consultante con DNI ``11111111'' deber\'ia ser ``123'' en DB.
         \newline

@@ -31,8 +31,6 @@ La información contenida en la matriz de relaciones se deriva de un proceso de 
          \hline
         \textbf{Client} & x & x & x & x & x & x  \\
          \hline
-        \textbf{Patrimony} & x & x & x & x & x & x  \\
-         \hline
         \textbf{Tel} & x & x & x & x & x & x \\
          \hline
         \textbf{User} & x & x & x & x & Miembro de & x \\
@@ -40,8 +38,6 @@ La información contenida en la matriz de relaciones se deriva de un proceso de 
         \textbf{Comment} & x & x & Está en una & x & x & x \\
          \hline
         \textbf{File} & x & x & x & x & x & x  \\
-         \hline
-        \textbf{Family} & x & x & x & x & x & x  \\
          \hline
         \textbf{Locality} & x & x & x & x & x & x  \\
          \hline
@@ -62,43 +58,39 @@ La información contenida en la matriz de relaciones se deriva de un proceso de 
     \centering
         \begin{tabular}{|p{4.1cm}|*{7}{>{\raggedright\arraybackslash}p{2.5cm}|}}
          \hline
-         & \textbf{Consultation} & \textbf{Client} & \textbf{Patrimony} & \textbf{Tel} & \textbf{User} & \textbf{Comment} & \textbf{File} \\
+         & \textbf{Consultation} & \textbf{Client} & \textbf{Tel} & \textbf{User} & \textbf{Comment} & \textbf{File} \\
          \hline
-        \textbf{Calendar} & x & x & x & x & x & x & x \\
+        \textbf{Calendar} & x & x & x & x & x & x \\
          \hline
-        \textbf{Event} & x & x & x & x & x & x & x \\
+        \textbf{Event} & x & x & x & x & x & x \\
          \hline
-        \textbf{Card}  & Pertenece a & x & x & x & x & x & x \\
+        \textbf{Card}  & Pertenece a & x & x & x & x & x \\
          \hline
-        \textbf{Panel}  & x & x & x & x & x & x & x \\
+        \textbf{Panel}  & x & x & x & x & x & x \\
          \hline
-        \textbf{Board}  & x & x & x & x & Tiene Miembros & x & x \\
+        \textbf{Board}  & x & x & x & Tiene Miembros & x & x \\
          \hline
-        \textbf{RequestConsultation} &  Solicita enviar una & x & x & x & x & x & x \\
+        \textbf{RequestConsultation} &  Solicita enviar una & x & x & x & x & x \\
          \hline
-        \textbf{Consultation} & \cellcolor{gray!25} & Realizada por & x & x & x & Tiene & x \\
+        \textbf{Consultation} & \cellcolor{gray!25} & Realizada por & x & x & Tiene & x \\
          \hline
-        \textbf{Client}  & Realiza una & \cellcolor{gray!25} & Tiene & Tiene & x & x & x \\
+        \textbf{Client}  & Realiza una & \cellcolor{gray!25} & Tiene & x & x & x \\
          \hline
-        \textbf{Patrimony}  & x & Pertenece a & \cellcolor{gray!25} & x & x & x & x \\
+        \textbf{Tel}  & x & Pertenece a &\cellcolor{gray!25} & x & &   \\
          \hline
-        \textbf{Tel}  & x & Pertenece a & x & \cellcolor{gray!25} & x & &   \\
+        \textbf{User} & x & x & x & \cellcolor{gray!25} & Realiza un & x \\
          \hline
-        \textbf{User} & x & x & x & x & \cellcolor{gray!25} & Realiza un & x \\
+        \textbf{Comment}  & x & x & x & Lo comenta & \cellcolor{gray!25} & Tiene \\
          \hline
-        \textbf{Comment}  & x & x & x & x & Lo comenta & \cellcolor{gray!25} & Tiene \\
+        \textbf{File}  & x& x& x & x & Adjuntado en & \cellcolor{gray!25}\\
          \hline
-        \textbf{File}  & & & x & x & x & Adjuntado en & \cellcolor{gray!25}\\
+        \textbf{Locality} & x & Residida por & x & x & x & x \\
          \hline
-        \textbf{Family}  & x & Es de un & x & x & x & x & x \\
+        \textbf{Province} & x & x & x & x & x & x \\
          \hline
-        \textbf{Locality} & x & Residida por & x & x & x & x & x \\
+        \textbf{Nationality} & x & x & x & x & x & x \\
          \hline
-        \textbf{Province} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Nationality} & x & x & x & x & x & x & x \\
-         \hline
-        \textbf{Child}  & x & x & x & x & x & x & x \\
+        \textbf{Child}  & x & Es hijo de & x & x & x & x \\
          \hline
         \end{tabular})
         \caption{Matriz de Relaciones Segunda Parte}
@@ -111,43 +103,41 @@ La información contenida en la matriz de relaciones se deriva de un proceso de 
     \centering
         \begin{tabular}{|p{4.1cm}|*{5}{>{\raggedright\arraybackslash}p{2.5cm}|}}
          \hline
-       & \textbf{Family} & \textbf{Locality} & \textbf{Province} & \textbf{Nationality} & \textbf{Child} \\
+       &\textbf{Locality} & \textbf{Province} & \textbf{Nationality} & \textbf{Child} \\
          \hline
-        \textbf{Calendar} & x & x & x & x & x \\
+        \textbf{Calendar} & x & x & x & x \\
          \hline
-        \textbf{Event} & x & x & x & x & x \\
+        \textbf{Event} & x & x & x & x \\
          \hline
-        \textbf{Card}  & x & x & x & x & x \\
+        \textbf{Card}  & x & x & x & x \\
          \hline
-        \textbf{Panel}  & x & x & x & x & x \\
+        \textbf{Panel}  & x & x & x & x \\
          \hline
-        \textbf{Board}  & x & x & x & x & x \\
+        \textbf{Board}  & x & x & x & x \\
          \hline
-        \textbf{RequestConsultation} & x & x & x & x & x \\
+        \textbf{RequestConsultation} & x & x & x & x \\
          \hline
-        \textbf{Consultation}  & x & x & x & x & x \\
+        \textbf{Consultation}  & x & x & x & x \\
          \hline
-        \textbf{Client} & Tiene una & Reside en & x & x & x \\
+        \textbf{Client} & Reside en & x & x & Tiene \\
          \hline
-        \textbf{Patrimony}  & x & x & x & x & x \\
+        \textbf{Patrimony}  & x & x & x & x \\
          \hline
-        \textbf{Tel}  & x & x & x & x & \\
+        \textbf{Tel}   & x & x & x & \\
          \hline
-        \textbf{User}  & x & x & x & x & x  \\
+        \textbf{User}  & x & x & x & x  \\
          \hline
-        \textbf{Comment}  & x & x & x & x & x \\
+        \textbf{Comment}   & x & x & x & x \\
          \hline
-        \textbf{File} & x & x & x & x & x \\
+        \textbf{File} & x & x & x & x \\
          \hline
-        \textbf{Family}  & \cellcolor{gray!25} & x & x & x & Contiene \\
+        \textbf{Locality}  & \cellcolor{gray!25} & Está en & x & Residida por \\
          \hline
-        \textbf{Locality} & x & \cellcolor{gray!25} & Está en & x & Residida por \\
+        \textbf{Province}  & Tiene & \cellcolor{gray!25} & Está en & x \\
          \hline
-        \textbf{Province}  & x & Tiene & \cellcolor{gray!25} & Está en & x \\
+        \textbf{Nationality}& x & Tiene & \cellcolor{gray!25} & x \\
          \hline
-        \textbf{Nationality}  & x & x & Tiene & \cellcolor{gray!25} & x \\
-         \hline
-        \textbf{Child}  & Está en una & Reside en & x & x & \cellcolor{gray!25} \\
+        \textbf{Child}  & Reside en & x & x & \cellcolor{gray!25} \\
          \hline
         \end{tabular})
         \caption{Matriz de Relaciones Tercera Parte}

@@ -149,47 +149,15 @@ marital\_status & varchar(10) & Estado civil. & Valores posibles: SINGLE, MARRIE
 housing\_type & varchar(20) & Tipo de vivienda. & Valores posibles: HOUSE, DEPARTMENT, TRAILER, STREET\_SITUATION. & V \\ \hline
 studies & varchar(30) & Estudios alcanzados. & & V \\ \hline
 email & varchar(254) & Correo electrónico. & & V \\ \hline
-\end{tabular}
-\caption{Tabla client}
-\end{table}
-
-
-\section{Tabla Family}\label{sec:table-family}
-La tabla \texttt{Family} representa la información relacionada con la familia de un cliente.
-
-\begin{table}[H]
-\centering
-\label{tab:family}
-\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
-\hline
-\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
-id & int4 & Clave Primaria y PK del cliente. & & V \\ \hline
 partner\_salary & int4 & Salario de la pareja del cliente. &  & V \\ \hline
-\end{tabular}
-\caption{Tabla Family}
-\end{table}
-
-
-
-\section{Tabla Patrimony}\label{sec:table-patrimony}
-La tabla \texttt{Patrimony} almacena información relacionada con el patrimonio de un cliente.
-
-\begin{table}[H]
-\centering
-\label{tab:patrimony}
-\begin{tabular}{|p{3cm}|p{2.5cm}|p{4.5cm}|p{4cm}|p{1cm}|}
-\hline
-\textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
-id & int4 & Clave Primaria y PK del cliente. & & V \\ \hline
 employment & varchar(45) & Tabajo del cliente. &  & V \\ \hline
 salary & int4 & Salario del cliente. &  & V \\ \hline
 amount\_retirement & int4 & Monto de ingreso por jubilación. &  & V \\ \hline
 amount\_pension & int4 & Monto de ingreso por pensión. &  & V \\ \hline
 other\_income & int4 & varchar(45) &  & V \\ \hline
-amount\_other\_income & int4 & Monto de otros ingresos del cliente. &  & V \\ \hline
-vehicle & varchar(300) & Vehiculo del cliente. &  & V \\ \hline
+amount\_other\_income & int4 & Monto de otros ingresos del cliente. &  & V \\ 
 \end{tabular}
-\caption{Tabla Patrimony}
+\caption{Tabla client}
 \end{table}
 
 
@@ -284,9 +252,13 @@ La tabla \texttt{Request Consultation} se utiliza para registrar solicitudes de 
 \textbf{Atributo} & \textbf{Tipo de dato}  & \textbf{Descripción} & \textbf{Comentarios} & \textbf{No nulo} \\ \hline
 consultation\_id & int4 & Clave Primaria y PK de la consulta asociada. & & V \\ \hline
 destiny\_board\_id & int4 &  PK del tablero de la comisión destino a la que se envía la solicitud. &  & V \\ \hline
+state & varchar(12) & Estado de la solicitud. & Valores posibles: PENDING, ACCEPTED, REJECTED. Por defecto es PENDING. & V \\ \hline
+resolution\_time stamp & timestamptz & Tiempo de resolución de la solicitud, es decir, el momento en que se rechaza o acepta. & Valor por defecto es NULL. & F \\ \hline
 \end{tabular}
 \caption{Tabla Request Consultation}
 \end{table}
+
+Para garantizar que no haya más de una solicitud pendiente para una consulta, se estableció como única la combinación de los campos 'consultation', 'state' y 'resolution\_timestamp'.
 
 
 \section{Tabla Panel}\label{sec:table-panel}
